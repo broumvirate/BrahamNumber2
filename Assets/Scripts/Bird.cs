@@ -13,22 +13,17 @@ public class Bird : MonoBehaviour
     public float max_speed;
     public float jumpVelocity;
 
-    protected bool isOnGround
-    {
-        get;
-        private set;
-    }
-
     public List<GameObject> chains = new List<GameObject>(5);
     public Magnet magnet;
+    public GameObject birdModel;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        birdCollider2D = GetComponent<Collider2D>();
+        rb = birdModel.GetComponent<Rigidbody2D>();
+        birdCollider2D = birdModel.GetComponent<Collider2D>();
         foreach (var chain in chains)
         {
             Physics2D.IgnoreCollision(chain.GetComponent<Collider2D>(), birdCollider2D);
