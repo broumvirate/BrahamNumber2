@@ -10,6 +10,7 @@ public class DexterMovement : MonoBehaviour
     public float horizSpeed = 3.0f;
     public float jumpPower;
     public bool ragdolling;
+    public bool canGetMagneted;
     float distToWall;
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
@@ -71,12 +72,24 @@ public class DexterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            canGetMagneted = true;
             animator.SetBool("Mag", true);
         }
 
         if (Input.GetKeyUp(KeyCode.Tab))
         {
+            canGetMagneted = false;
             animator.SetBool("Mag", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartRagdolling();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            StopRagdolling();
         }
 
         if (!ragdolling)
@@ -96,9 +109,17 @@ public class DexterMovement : MonoBehaviour
                 }
                 else
                 {
+                    animator.SetBool("Falling", false);
                     animator.SetBool("Jumping", false);
                 }
-
+            }
+            else
+            {
+                if (!Input.GetKey(jump))
+                {
+                    animator.SetBool("Falling", true);
+                    animator.SetBool("Jumping", false);
+                }
             }
 
             if (Input.GetKey(moveRight))
@@ -187,5 +208,6 @@ public class DexterMovement : MonoBehaviour
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Kinematic;
 
         LoadBoneLocations();
+        canGetMagneted = false; 
     }
 }
