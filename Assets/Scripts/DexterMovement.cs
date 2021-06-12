@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DexterMovement : MonoBehaviour
@@ -20,6 +21,8 @@ public class DexterMovement : MonoBehaviour
     private Animator animator;
     // Use this for initialization
 
+    private Dictionary<string, (Quaternion, Vector3)> standingDexter = new Dictionary<string, (Quaternion, Vector3)>();
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,6 +35,31 @@ public class DexterMovement : MonoBehaviour
     {
         ragdolling = false;
         distToWall = collider.bounds.extents.x + 0.1f;
+        SaveBoneLocations();
+    }
+
+    private void SaveBoneLocations()
+    {
+        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
+        {
+            if (!standingDexter.ContainsKey(bone.gameObject.name))
+            {
+                standingDexter.Add(bone.gameObject.name, (bone.localRotation, bone.localPosition));
+            }
+        }
+    }
+
+    private void LoadBoneLocations()
+    {
+        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
+        {
+            if (standingDexter.ContainsKey(bone.gameObject.name))
+            {
+                var loc = standingDexter[bone.gameObject.name];
+                bone.localRotation = loc.Item1;
+                bone.localPosition = loc.Item2;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -148,15 +176,14 @@ public class DexterMovement : MonoBehaviour
 
         // Disable all of the garbage
         var hingeJoints = DexterModel.GetComponentsInChildren<HingeJoint2D>();
-        foreach (var j in hingeJoints)
-        {
-            j.enabled = false;
-        }
+        foreach (var j in hingeJoints) j.enabled = false;
 
         var limbColliders = DexterModel.GetComponentsInChildren<EdgeCollider2D>();
         foreach (var l in limbColliders) l.isTrigger = true;
 
         var limbRigidBodies = DexterModel.GetComponentsInChildren<Rigidbody2D>();
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Kinematic;
+
+        LoadBoneLocations();
     }
 }
