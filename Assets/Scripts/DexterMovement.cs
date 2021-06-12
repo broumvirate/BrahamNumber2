@@ -9,7 +9,8 @@ public class DexterMovement : MonoBehaviour
     public float horizSpeed = 3.0f;
     public float jumpPower = 6.0f;
     public bool ragdolling;
-    float distToGround;
+    float distToWall;
+    public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
     private Rigidbody2D rb2d;
     // Use this for initialization
@@ -17,7 +18,7 @@ public class DexterMovement : MonoBehaviour
     {
         ragdolling = false;
         rb2d = GetComponent<Rigidbody2D>();
-        distToGround = GetComponent<Collider2D>().bounds.extents.y + 0.1f;
+        distToWall = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
     }
 
     // Update is called once per frame
@@ -37,18 +38,23 @@ public class DexterMovement : MonoBehaviour
             }
             if (Input.GetKey(moveRight))
             {
-                //RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x - (GetComponent<BoxCollider2D>().bounds.extents.x - 0.1f), transform.position.y), Vector2.down, distToGround + 0.1f, groundLayer);
-                if (vel.x <= horizSpeed)
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
+                if (vel.x <= horizSpeed && wallCheck.collider == null)
                 {
+                    
                     vel.x = vel.x + 1;
                 }
+                
             }
             else if (Input.GetKey(moveLeft))
             {
-                if (vel.x >= -horizSpeed)
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
+                if (vel.x >= -horizSpeed && wallCheck.collider == null)
                 {
+                    
                     vel.x = vel.x - 1;
                 }
+                
             }
             else
             {
@@ -67,7 +73,7 @@ public class DexterMovement : MonoBehaviour
             }
 
             rb2d.velocity = vel;
-            Debug.Log(vel);
+            //Debug.Log(vel);
         }
         
 
