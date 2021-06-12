@@ -63,7 +63,7 @@ public class DexterMovement : MonoBehaviour
             }
             else
             {
-                vel.x /= 2;
+                //vel.x /= 2;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
 
