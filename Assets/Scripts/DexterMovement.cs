@@ -123,45 +123,32 @@ public class DexterMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds jump force to the vector given, triggers animations and shit
+    /// Adds jump force to the vector given, handles jump and fall animations
     /// </summary>
     /// <param name="vel"></param>
     private void HandleJump(ref Vector2 vel)
     {
         bool grounded = GetComponent<CheckGrounded>().grounded;
         //if touching ground:
-        if (grounded && !ragdolling)
+        if (!ragdolling)
         {
-            //if touching ground:
             if (grounded)
             {
+                animator.SetBool("Falling", false);
                 if (Input.GetKey(jump) && !reaching)
                 {
+                    // Add jump force
+                    vel.y = jumpPower;
                     animator.SetBool("Jumping", true);
-                    if (grounded)
-                    {
-                        vel.y = jumpPower; //placeholder jump height value
-                    }
                 }
-                else
-                {
-                    animator.SetBool("Falling", false);
-                    animator.SetBool("Jumping", false);
-                }
-
             }
             else
             {
-                animator.SetBool("Falling", false);
-                animator.SetBool("Jumping", false);
-            }
-        }
-        else if(!ragdolling)
-        {
-            if (!Input.GetKey(jump) && !reaching)
-            {
-                animator.SetBool("Falling", true);
-                animator.SetBool("Jumping", false);
+                if (!Input.GetKey(jump))
+                {
+                    animator.SetBool("Falling", true);
+                    animator.SetBool("Jumping", false);
+                }
             }
         }
     }
@@ -224,6 +211,7 @@ public class DexterMovement : MonoBehaviour
     void StartRagdolling()
     {
         ragdolling = true;
+        rb2d.velocity = Vector2.zero;
         animator.SetBool("Ragdoll", true);
 
         // Disable dexter normal collider
