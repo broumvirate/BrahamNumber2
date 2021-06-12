@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GenericMagnetTarget : MonoBehaviour, IMagnetic
 {
+    public float strength = 1.5f;
+    [HideInInspector]
     public bool isMagnetized;
-    public float strength;
+
     private bool canMagnetize = true;
     private GameObject magnet;
     private FixedJoint2D magnetFixedJoint2D;
@@ -32,6 +34,15 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
             target.magnetizedList.Add(this);
             isMagnetized = true;
             this.magnet = collider.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject == this.magnet)
+        {
+            isMagnetized = false;
+            magnet = null;
         }
     }
 

@@ -6,15 +6,15 @@ public class BirdMovement : MonoBehaviour
 {
     #region Variables
 
+    public float horizSpeed;
+    public float jumpVelocity;
+    public LayerMask groundLayer;
+
+    private float distToWall;
+    
     private Rigidbody2D rb;
     private Collider2D collider;
     private Animator animator;
-
-    public float horizSpeed;
-    public float jumpVelocity;
-    private float distToWall;
-    public LayerMask groundLayer;
-
 
     private KeyCode jump = KeyCode.UpArrow;
     private KeyCode moveLeft = KeyCode.LeftArrow;
@@ -28,13 +28,14 @@ public class BirdMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
-        distToWall = GetComponent<Collider2D>().bounds.extents.x + 0.01f;
+        distToWall = collider.bounds.extents.x + 0.01f;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(jump)) Jump();
+
         Move();
 
     }
@@ -72,7 +73,7 @@ public class BirdMovement : MonoBehaviour
         }
         else
         {
-            vel.x /= 3;
+            vel.x /= 1.01f;
         }
 
         rb.velocity = vel;
