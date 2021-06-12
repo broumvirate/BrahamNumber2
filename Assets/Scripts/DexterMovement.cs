@@ -15,6 +15,7 @@ public class DexterMovement : MonoBehaviour
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
 
     public GameObject DexterModel;
+    public DexterHook Hook;
 
     private Rigidbody2D rb2d;
     private Collider2D collider;
@@ -66,35 +67,47 @@ public class DexterMovement : MonoBehaviour
     void Update()
     {
         Vector2 vel = rb2d.velocity;//velocity is set to current velocity
+        bool grounded = GetComponent<CheckGrounded>().grounded;
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            StartRagdolling();
+            animator.SetBool("Mag", true);
         }
 
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            StopRagdolling();
+            animator.SetBool("Mag", false);
         }
 
         if (!ragdolling)
         {
             
-            if (Input.GetKey(jump))
+            //if touching ground:
+            if (grounded)
             {
-                //if touching ground:
-                if (GetComponent<CheckGrounded>().grounded)
+                if (Input.GetKey(jump))
                 {
-                    vel.y = jumpPower; //placeholder jump height value
+                    animator.SetBool("Jumping", true);
+                    if (grounded)
+                    {
+                        vel.y = jumpPower; //placeholder jump height value
+                    }
+
                 }
+                else
+                {
+                    animator.SetBool("Jumping", false);
+                }
+
             }
+
             if (Input.GetKey(moveRight))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
                 if (vel.x <= horizSpeed && wallCheck.collider == null)
                 {
-                    
+                    animator.SetBool("Running", true);
                     vel.x = vel.x + 1;
                 }               
             }
@@ -104,12 +117,13 @@ public class DexterMovement : MonoBehaviour
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
                 if (vel.x >= -horizSpeed && wallCheck.collider == null)
                 {
-                    
+                    animator.SetBool("Running", true);
                     vel.x = vel.x - 1;
                 }                
             }
             else
             {
+                animator.SetBool("Running", false);
                 vel.x /= 2;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
@@ -117,16 +131,18 @@ public class DexterMovement : MonoBehaviour
             if (GetComponent<CheckGrounded>().grounded && vel.y < 0)
             {
                 vel.y = 0;
-
+                //animator.SetBool("Falling", false);
                 rb2d.velocity = vel;
             }
             else
             {
+                //animator.SetBool("Falling", true);
                 vel.y -= 0.01f;
             }
 
             rb2d.velocity = vel;
             //Debug.Log(vel);
+
         }
         
     }
