@@ -6,6 +6,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
 {
     public bool isMagnetized;
     public float strength;
+    private bool canMagnetize = true;
     private GameObject magnet;
     private FixedJoint2D magnetFixedJoint2D;
 
@@ -26,7 +27,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     {
         // When entering magnet range
         var target = collider.GetComponent<Magnet>();
-        if (target != null && !Input.GetKeyDown(KeyCode.M))
+        if (target != null && canMagnetize)
         {
             target.magnetizedList.Add(this);
             isMagnetized = true;
@@ -37,7 +38,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     void OnCollisionEnter2D(Collision2D collider)
     {
         // Creates fixedjoint2d when touching the actual magnet
-        if (collider.gameObject == this.magnet && !Input.GetKeyDown(KeyCode.M))
+        if (collider.gameObject == this.magnet && canMagnetize)
         {
             isMagnetized = false;
             var joint = gameObject.AddComponent<FixedJoint2D>();
@@ -58,5 +59,17 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     {
         isMagnetized = false;
         Destroy(magnetFixedJoint2D);
+        canMagnetize = false;
+        StartCoroutine("FreeFromMagnet2");
+
     }
+
+    private IEnumerator FreeFromMagnet2()
+    {
+        yield return new WaitForSeconds(0.3f);
+        canMagnetize = true;
+    }
+
+
+
 }

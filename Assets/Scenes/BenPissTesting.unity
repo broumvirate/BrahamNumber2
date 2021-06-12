@@ -555,6 +555,22 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1109773846047299639, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1261343853
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109773846047299639, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237125217094103062, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1261343853
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237125217094103062, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1631239593754006143, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ShapeTexture
       value: 
@@ -571,6 +587,18 @@ PrefabInstance:
       propertyPath: m_ShapeTexture
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1631239594736506008, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.08633654
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631239594736506008, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631239594736506008, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 183
+      objectReference: {fileID: 0}
     - target: {fileID: 1631239594736506009, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -586,6 +614,10 @@ PrefabInstance:
     - target: {fileID: 1631239594840769266, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_Name
       value: Bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631239594840769267, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: chains.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1631239594840769276, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_LocalPosition.x
@@ -634,6 +666,26 @@ PrefabInstance:
     - target: {fileID: 1631239594840769279, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ShapeTexture
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293235342939620861, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1261343853
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293235342939620861, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096887474784513928, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_UseLimits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649678249548727090, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1261343853
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649678249548727090, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
