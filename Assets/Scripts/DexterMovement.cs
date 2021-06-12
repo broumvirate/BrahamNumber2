@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Experimental.U2D.IK;
 
 
 public class DexterMovement : MonoBehaviour
@@ -133,7 +135,7 @@ public class DexterMovement : MonoBehaviour
                 animator.SetBool("Jumping", false);
             }
         }
-        else
+        else if(!ragdolling)
         {
             if (!Input.GetKey(jump))
             {
@@ -193,8 +195,6 @@ public class DexterMovement : MonoBehaviour
                 standingDexter.Add(bone.gameObject.name, (bone.localPosition, bone.localRotation));
             }
         }
-
-        standingDexter.Remove(DexterModel.name);
     }
 
     /// <summary>
@@ -206,7 +206,7 @@ public class DexterMovement : MonoBehaviour
         animator.SetBool("Ragdoll", true);
 
         // Disable dexter normal collider
-        collider.enabled = false;
+        collider.isTrigger = true;
         rb2d.isKinematic = true;
 
         // Enable all of the garbage
@@ -218,6 +218,9 @@ public class DexterMovement : MonoBehaviour
 
         var limbRigidBodies = DexterModel.GetComponentsInChildren<Rigidbody2D>();
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Dynamic;
+
+        var limbSolvers = DexterModel.GetComponentsInChildren<LimbSolver2D>();
+        foreach (var s in limbSolvers) s.enabled = false;
     }
 
     /// <summary>
@@ -229,7 +232,7 @@ public class DexterMovement : MonoBehaviour
     {
 
         // Enable normal dexter collider
-        collider.enabled = true;
+        collider.isTrigger = false;
         rb2d.isKinematic = false;
 
         // Disable all of the garbage
@@ -255,6 +258,15 @@ public class DexterMovement : MonoBehaviour
                 break;
         }
 
+        YoinkFinisher();
+
+    }
+
+    private void YoinkFinisher()
+    {
+        var limbSolvers = DexterModel.GetComponentsInChildren<LimbSolver2D>();
+        foreach (var s in limbSolvers) s.enabled = true;
+
         ragdolling = false;
         animator.SetBool("Ragdoll", false);
         canGetMagneted = false; 
@@ -263,9 +275,7 @@ public class DexterMovement : MonoBehaviour
     private IEnumerator WaitForYoink()
     {
         yield return new WaitForSeconds(yoinkLength);
-        ragdolling = false;
-        animator.SetBool("Ragdoll", false);
-        canGetMagneted = false;
+        YoinkFinisher();
     }
 
     /// <summary>
