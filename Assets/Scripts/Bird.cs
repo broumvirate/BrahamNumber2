@@ -38,7 +38,7 @@ public class Bird : MonoBehaviour
 
     void Move()
     {
-        float x = Input.GetAxis("HorizontalBird");
+        float x = Input.GetAxis("Horizontal");
         float moveBy = x * speed;
         if (moveBy != 0f)
         {
