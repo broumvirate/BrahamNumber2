@@ -28,7 +28,7 @@ public class DexterMovement : MonoBehaviour
     private Animator animator;
     // Use this for initialization
 
-    private Dictionary<string, Transform> standingDexter = new Dictionary<string, Transform>();
+    private Dictionary<string, (Vector3, Quaternion)> standingDexter = new Dictionary<string, (Vector3, Quaternion)>();
 
 
     private enum YoinkMode
@@ -104,7 +104,7 @@ public class DexterMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            StopRagdolling(YoinkMode.Teleport);
+            StopRagdolling(YoinkMode.Lerp);
         }
     }
 
@@ -190,9 +190,11 @@ public class DexterMovement : MonoBehaviour
         {
             if (!standingDexter.ContainsKey(bone.gameObject.name))
             {
-                standingDexter.Add(bone.gameObject.name, bone);
+                standingDexter.Add(bone.gameObject.name, (bone.localPosition, bone.localRotation));
             }
         }
+
+        standingDexter.Remove(DexterModel.name);
     }
 
     /// <summary>
@@ -247,7 +249,7 @@ public class DexterMovement : MonoBehaviour
                 break;
             case YoinkMode.Lerp:
                 YoinkBoneLocations();
-                StartCoroutine("WaitForYoink");
+                StartCoroutine(WaitForYoink());
                 return;
             case YoinkMode.Off:
                 break;
@@ -276,8 +278,8 @@ public class DexterMovement : MonoBehaviour
             if (standingDexter.ContainsKey(bone.gameObject.name))
             {
                 var loc = standingDexter[bone.gameObject.name];
-                bone.localPosition = loc.localPosition;
-                bone.localRotation = loc.localRotation;
+                bone.localPosition = loc.Item1;
+                bone.localRotation = loc.Item2;
             }
         }
     }
@@ -294,7 +296,7 @@ public class DexterMovement : MonoBehaviour
             {
                 var loc = standingDexter[bone.gameObject.name];
                 var yoink = bone.gameObject.AddComponent<BootYoinker>();
-                yoink.start = bone;
+                yoink.start = (bone.localPosition, bone.localRotation);
                 yoink.end = loc;
                 yoink.length = yoinkLength;
             }

@@ -6,8 +6,8 @@ using UnityEngine;
 public class BootYoinker : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform start;
-    public Transform end;
+    public (Vector3, Quaternion) start;
+    public (Vector3, Quaternion) end;
 
     private Transform me;
     public float length;
@@ -33,8 +33,8 @@ public class BootYoinker : MonoBehaviour
             {
                 Debugger.Break();
             }
-            me.localPosition = Vector3.Lerp(start.localPosition, end.localPosition, progress);
-            me.localRotation = Quaternion.Lerp(start.localRotation, end.localRotation, progress);
+            me.localPosition = Vector3.Lerp(start.Item1, end.Item1, progress);
+            me.localRotation = Quaternion.Lerp(start.Item2, end.Item2, progress);
         }
     }
 }
