@@ -10,6 +10,7 @@ using UnityEngine.Experimental.U2D.IK;
 
 public class DexterMovement : MonoBehaviour
 {
+    public KeyCode reach = KeyCode.Tab;
     public KeyCode jump = KeyCode.W;
     public KeyCode moveRight = KeyCode.D;
     public KeyCode moveLeft = KeyCode.A;
@@ -25,6 +26,7 @@ public class DexterMovement : MonoBehaviour
     public GameObject DexterModel;
     public DexterHook Hook;
 
+    private bool reaching;
     private Rigidbody2D rb2d;
     private Collider2D collider;
     private Animator animator;
@@ -87,10 +89,20 @@ public class DexterMovement : MonoBehaviour
 
     private void HandleMagnet()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        Vector2 vel = rb2d.velocity;//velocity is set to current velocity
+        bool grounded = GetComponent<CheckGrounded>().grounded;
+
+        if (Input.GetKey(KeyCode.Tab))
         {
+            reaching = true;
             canGetMagneted = true;
             animator.SetBool("Mag", true);
+        }
+        else
+        {
+            reaching = false;
+            canGetMagneted = false;
+            animator.SetBool("Mag", false);
         }
 
         if (Input.GetKeyUp(KeyCode.Tab))
@@ -120,12 +132,21 @@ public class DexterMovement : MonoBehaviour
         //if touching ground:
         if (grounded && !ragdolling)
         {
-            if (Input.GetKey(jump))
+            //if touching ground:
+            if (grounded)
             {
-                animator.SetBool("Jumping", true);
-                if (grounded)
+                if (Input.GetKey(jump) && !reaching)
                 {
-                    vel.y = jumpPower; //placeholder jump height value
+                    animator.SetBool("Jumping", true);
+                    if (grounded)
+                    {
+                        vel.y = jumpPower; //placeholder jump height value
+                    }
+                }
+                else
+                {
+                    animator.SetBool("Falling", false);
+                    animator.SetBool("Jumping", false);
                 }
 
             }
@@ -137,7 +158,7 @@ public class DexterMovement : MonoBehaviour
         }
         else if(!ragdolling)
         {
-            if (!Input.GetKey(jump))
+            if (!Input.GetKey(jump) && !reaching)
             {
                 animator.SetBool("Falling", true);
                 animator.SetBool("Jumping", false);
@@ -163,7 +184,7 @@ public class DexterMovement : MonoBehaviour
                     vel.x = vel.x + 1;
                 }               
             }
-            else if (Input.GetKey(moveLeft))
+            else if (Input.GetKey(moveLeft) && !reaching)
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
