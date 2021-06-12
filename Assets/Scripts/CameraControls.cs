@@ -10,8 +10,9 @@ public class CameraControls : MonoBehaviour
     public GameObject character;
     public GameObject birdFucker;
     public float minZoom = 6.0f;
-    public float maxZoom = 20.0f;
-    public float zoomLimiter = 10.0f;
+    public float maxZoom = 15.0f;
+    public float zoomLimiter = 16/9;
+    public float distMultiplier;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,6 @@ public class CameraControls : MonoBehaviour
         desiredPos.y += 2.0f;
         desiredPos.z = -10.0f;
         desiredPos = Vector3.Lerp(currPos, desiredPos, 0.1f);
-        
 
         List<Vector2> focalPoints = new List<Vector2> { };
         focalPoints.Add(dexter.transform.position);
@@ -49,18 +49,19 @@ public class CameraControls : MonoBehaviour
 
     void Zoom(List<Vector2> inputList)
     {
+
         //lemme explain
         //initialize variables for focal point position averaging
-        float xAvg = 0;
-        float yAvg = 0;
+        /*float xAvg = 0;
+        float yAvg = 0;*/
         //average all the x and y values in the input list
-        for(int i = 0; i < inputList.Count; i++)
+        /*for(int i = 0; i < inputList.Count; i++)
         {
             xAvg += inputList[i].x;
             yAvg += inputList[i].y;
         }
         xAvg /= inputList.Count;
-        yAvg /= inputList.Count;
+        yAvg /= inputList.Count;*/
 
         //determine whether the character is moving right or left, so we can put the camera ahead of the direction of movement
         int xTrajectory = 1;
@@ -73,9 +74,18 @@ public class CameraControls : MonoBehaviour
             xTrajectory = 1;
         }
         //lerp camera position to the average of all values, with constant modifiers (2 units ahead of motion in x, static 3 units above of y), 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(xAvg + (2.0f * xTrajectory), yAvg + 1.0f, -10), Time.deltaTime * 2);
-        Debug.Log("theoretically changing position");
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance(inputList) / zoomLimiter);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(character.transform.position.x + (2.0f * xTrajectory), character.transform.position.y + 1.0f, -10), Time.deltaTime * 2);
+        //Debug.Log("theoretically changing position");
+        //float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance(inputList)/zoomLimiter);
+        float newZoom = getGreatestDistance(inputList);
+        if(newZoom < minZoom)
+        {
+            newZoom = minZoom;
+        }
+        else if(newZoom > maxZoom)
+        {
+            newZoom = maxZoom;
+        }
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
     }
 
@@ -91,6 +101,6 @@ public class CameraControls : MonoBehaviour
                 greatest = dist;
             }
         }
-        return greatest;
+        return greatest * distMultiplier;
     }
 }

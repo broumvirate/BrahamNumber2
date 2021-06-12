@@ -18,15 +18,16 @@ public class DexterHook : MonoBehaviour, IMagnetic
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        canMagnetize = false;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(isMagnetized) MoveTowardsMagnet();
+        
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collider2D collider)
     {
         // When entering magnet range
         var target = collider.GetComponent<Magnet>();
