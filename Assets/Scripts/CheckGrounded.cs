@@ -11,7 +11,7 @@ public class CheckGrounded : MonoBehaviour
     void Start()
     {
         distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
-        Debug.Log(distToGround);
+        //Debug.Log(distToGround);
     }
     //check if the object is on the ground by detecting a raycast hit below it
     private void Update()

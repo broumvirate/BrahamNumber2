@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericMagnetTarget : MonoBehaviour, IMagnetic
+public class DexterHook : MonoBehaviour, IMagnetic
 {
+    public DexterMovement Dexter;
     public float strength = 1.5f;
     [HideInInspector]
     public bool isMagnetized;
@@ -29,8 +30,9 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     {
         // When entering magnet range
         var target = collider.GetComponent<Magnet>();
-        if (target != null && canMagnetize)
+        if (target != null && canMagnetize && Dexter.ragdolling)
         {
+            Debug.Log("Dexter triggered");
             target.magnetizedList.Add(this);
             isMagnetized = true;
             this.magnet = collider.gameObject;
@@ -49,7 +51,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     void OnCollisionEnter2D(Collision2D collider)
     {
         // Creates fixedjoint2d when touching the actual magnet
-        if (collider.gameObject == this.magnet && canMagnetize)
+        if (collider.gameObject == this.magnet && canMagnetize && Dexter.ragdolling)
         {
             isMagnetized = false;
             var joint = gameObject.AddComponent<FixedJoint2D>();
@@ -81,7 +83,6 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
         canMagnetize = true;
         isMagnetized = true;
     }
-
 
 
 }
