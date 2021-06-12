@@ -5,18 +5,19 @@ using UnityEngine;
 public class MakeLethal : MonoBehaviour
 {
     private PlayerController c;
+    private BirdController b;
 
 
     void Awake()
     {
         c = FindObjectOfType<PlayerController>();
-        Debug.Log(c.gameObject.name);
+        b = FindObjectOfType<BirdController>();
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject == c.gameObject)
+        if (collision.gameObject == c.gameObject || collision.gameObject == b.gameObject)
         {
             c.kill();
         }
