@@ -239,10 +239,16 @@ public class DexterMovement : MonoBehaviour
     /// <returns></returns>
     private void StopRagdolling(YoinkMode mode = YoinkMode.Off)
     {
+        var dexterLoc = DexterModel.GetComponent<Transform>();
+        var parentLoc = GetComponent<Transform>();
 
         // Enable normal dexter collider
         collider.isTrigger = false;
         rb2d.isKinematic = false;
+
+        parentLoc.position = dexterLoc.position;
+        rb2d.position = dexterLoc.position;
+        dexterLoc.localPosition = Vector3.zero;
 
         // Disable all of the garbage
         var hingeJoints = DexterModel.GetComponentsInChildren<HingeJoint2D>();

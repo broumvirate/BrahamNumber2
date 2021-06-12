@@ -5,11 +5,9 @@ using UnityEngine;
 public class DexterHook : MonoBehaviour, IMagnetic
 {
     public DexterMovement Dexter;
-    public float strength = 1.5f;
+    public float strength = 10f;
     [HideInInspector]
     public bool isMagnetized;
-
-    private bool canMagnetize = true;
     private GameObject magnet;
     private FixedJoint2D magnetFixedJoint2D;
 
@@ -18,28 +16,29 @@ public class DexterHook : MonoBehaviour, IMagnetic
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        canMagnetize = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (isMagnetized)
+        {
+            Debug.Log("Fuck you");
+            MoveTowardsMagnet();
+        }
     }
 
-    void OnCollisionEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         // When entering magnet range
         var target = collider.GetComponent<Magnet>();
-        if (target != null && canMagnetize && Dexter.ragdolling)
+        if (target != null && Dexter.ragdolling)
         {
-            Debug.Log("Dexter triggered");
             target.magnetizedList.Add(this);
             isMagnetized = true;
             this.magnet = collider.gameObject;
         }
     }
-
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject == this.magnet)
@@ -49,10 +48,10 @@ public class DexterHook : MonoBehaviour, IMagnetic
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // Creates fixedjoint2d when touching the actual magnet
-        if (collider.gameObject == this.magnet && canMagnetize && Dexter.ragdolling)
+        if (collision.gameObject == this.magnet && Dexter.canGetMagneted && Dexter.ragdolling)
         {
             isMagnetized = false;
             var joint = gameObject.AddComponent<FixedJoint2D>();
@@ -73,7 +72,7 @@ public class DexterHook : MonoBehaviour, IMagnetic
     {
         isMagnetized = false;
         Destroy(magnetFixedJoint2D);
-        canMagnetize = false;
+        Dexter.canGetMagneted = false;
         StartCoroutine("FreeFromMagnet2");
 
     }
@@ -81,7 +80,6 @@ public class DexterHook : MonoBehaviour, IMagnetic
     private IEnumerator FreeFromMagnet2()
     {
         yield return new WaitForSeconds(0.3f);
-        canMagnetize = true;
         isMagnetized = true;
     }
 
