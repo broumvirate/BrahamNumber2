@@ -23,7 +23,6 @@ public class DexterHook : MonoBehaviour, IMagnetic
     {
         if (isMagnetized)
         {
-            Debug.Log("Fuck you");
             MoveTowardsMagnet();
         }
     }
