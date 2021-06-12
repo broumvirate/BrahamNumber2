@@ -9,9 +9,9 @@ public class CameraControls : MonoBehaviour
     public Camera cam;
     public GameObject character;
     public GameObject birdFucker;
-    private float minZoom = 6.0f;
-    private float maxZoom = 20.0f;
-    public float zoomLimiter = 2.0f;
+    public float minZoom = 6.0f;
+    public float maxZoom = 20.0f;
+    public float zoomLimiter = 10.0f;
     
     // Start is called before the first frame update
     void Start()

@@ -455,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316410011222896354, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.9354424
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 6316410011222896354, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.939725
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6316410011222896354, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
       propertyPath: m_LocalPosition.z
@@ -511,7 +511,11 @@ PrefabInstance:
       objectReference: {fileID: 1265455553}
     - target: {fileID: 6316410011222896357, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
       propertyPath: zoomLimiter
-      value: 3
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316410011222896357, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
+      propertyPath: minZoom
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f5157cdcdd358f43b0b3d82f0bcd559, type: 3}
