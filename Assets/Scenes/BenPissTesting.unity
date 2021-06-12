@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f21e7bdc1b499e46bb8d3fe8a641bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 1.5
   isMagnetized: 0
-  strength: 1
 --- !u!1 &1450957001
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1631239593964306183, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.21498972
+      value: 0.6036782
       objectReference: {fileID: 0}
     - target: {fileID: 1631239594674836453, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ShapeTexture
@@ -664,13 +664,17 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3462726709775488601, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: xDecay
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3817536602574891755, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.046972223
+      value: -0.0469722
       objectReference: {fileID: 0}
     - target: {fileID: 4071432933407390887, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.037105158
+      value: -0.03710517
       objectReference: {fileID: 0}
     - target: {fileID: 4096887474784513928, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_UseLimits
@@ -678,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4096887474784513928, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.054372456
+      value: -0.054372482
       objectReference: {fileID: 0}
     - target: {fileID: 4096887474784513928, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.y
