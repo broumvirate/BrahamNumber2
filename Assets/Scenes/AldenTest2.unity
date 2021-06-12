@@ -1310,6 +1310,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1396018555922542705, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.01885295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396018555922542705, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75862074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396018555922542705, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10534716
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396018555922542705, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
+      propertyPath: m_Size.y
+      value: 3.0326357
+      objectReference: {fileID: 0}
     - target: {fileID: 1396018555922542716, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
       propertyPath: jumpPower
       value: 9

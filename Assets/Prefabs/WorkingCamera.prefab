@@ -104,7 +104,10 @@ MonoBehaviour:
   cam: {fileID: 6316410011222896355}
   character: {fileID: 0}
   birdFucker: {fileID: 0}
-  zoomLimiter: 2
+  minZoom: 6
+  maxZoom: 11
+  zoomLimiter: 1.778
+  distMultiplier: 1.5
 --- !u!82 &3815623284947086829
 AudioSource:
   m_ObjectHideFlags: 0

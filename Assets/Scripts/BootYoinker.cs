@@ -29,10 +29,6 @@ public class BootYoinker : MonoBehaviour
         }
         else
         {
-            if (progress > 0.3)
-            {
-                Debugger.Break();
-            }
             me.localPosition = Vector3.Lerp(start.Item1, end.Item1, progress);
             me.localRotation = Quaternion.Lerp(start.Item2, end.Item2, progress);
         }
