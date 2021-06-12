@@ -1,6 +1,10 @@
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 
 public class DexterMovement : MonoBehaviour
 {
@@ -8,6 +12,7 @@ public class DexterMovement : MonoBehaviour
     public KeyCode moveRight = KeyCode.D;
     public KeyCode moveLeft = KeyCode.A;
     public float horizSpeed = 3.0f;
+    public float yoinkLength = 0.4f;
     public float jumpPower;
     public bool ragdolling;
     public bool canGetMagneted;
@@ -23,45 +28,29 @@ public class DexterMovement : MonoBehaviour
     private Animator animator;
     // Use this for initialization
 
-    private Dictionary<string, (Quaternion, Vector3)> standingDexter = new Dictionary<string, (Quaternion, Vector3)>();
+    private Dictionary<string, Transform> standingDexter = new Dictionary<string, Transform>();
+
+
+    private enum YoinkMode
+    {
+        Off,
+        Teleport,
+        Lerp
+    }
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         animator = GetComponentInChildren<Animator>();
-        StopRagdolling();
+        ragdolling = false;
+        StopRagdolling(YoinkMode.Off);
     }
 
     void Start()
     {
-        ragdolling = false;
         distToWall = collider.bounds.extents.x + 0.1f;
         SaveBoneLocations();
-    }
-
-    private void SaveBoneLocations()
-    {
-        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
-        {
-            if (!standingDexter.ContainsKey(bone.gameObject.name))
-            {
-                standingDexter.Add(bone.gameObject.name, (bone.localRotation, bone.localPosition));
-            }
-        }
-    }
-
-    private void LoadBoneLocations()
-    {
-        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
-        {
-            if (standingDexter.ContainsKey(bone.gameObject.name))
-            {
-                var loc = standingDexter[bone.gameObject.name];
-                bone.localRotation = loc.Item1;
-                bone.localPosition = loc.Item2;
-            }
-        }
     }
 
     // Update is called once per frame
@@ -70,6 +59,32 @@ public class DexterMovement : MonoBehaviour
         Vector2 vel = rb2d.velocity;//velocity is set to current velocity
         bool grounded = GetComponent<CheckGrounded>().grounded;
 
+        HandleMagnet();
+        HandleJump(ref vel);
+        HandleMovement(ref vel);
+
+        if (!ragdolling)
+        {
+            // Gravity and floor
+            if (grounded && vel.y < 0)
+            {
+                vel.y = 0;
+                //animator.SetBool("Falling", false);
+                rb2d.velocity = vel;
+            }
+            else
+            {
+                //animator.SetBool("Falling", true);
+                vel.y -= 0.01f;
+            }
+
+            rb2d.velocity = vel;
+        }
+        
+    }
+
+    private void HandleMagnet()
+    {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             canGetMagneted = true;
@@ -89,39 +104,53 @@ public class DexterMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            StopRagdolling();
+            StopRagdolling(YoinkMode.Teleport);
         }
+    }
 
-        if (!ragdolling)
+    /// <summary>
+    /// Adds jump force to the vector given, triggers animations and shit
+    /// </summary>
+    /// <param name="vel"></param>
+    private void HandleJump(ref Vector2 vel)
+    {
+        bool grounded = GetComponent<CheckGrounded>().grounded;
+        //if touching ground:
+        if (grounded && !ragdolling)
         {
-            
-            //if touching ground:
-            if (grounded)
+            if (Input.GetKey(jump))
             {
-                if (Input.GetKey(jump))
+                animator.SetBool("Jumping", true);
+                if (grounded)
                 {
-                    animator.SetBool("Jumping", true);
-                    if (grounded)
-                    {
-                        vel.y = jumpPower; //placeholder jump height value
-                    }
+                    vel.y = jumpPower; //placeholder jump height value
+                }
 
-                }
-                else
-                {
-                    animator.SetBool("Falling", false);
-                    animator.SetBool("Jumping", false);
-                }
             }
             else
             {
-                if (!Input.GetKey(jump))
-                {
-                    animator.SetBool("Falling", true);
-                    animator.SetBool("Jumping", false);
-                }
+                animator.SetBool("Falling", false);
+                animator.SetBool("Jumping", false);
             }
+        }
+        else
+        {
+            if (!Input.GetKey(jump))
+            {
+                animator.SetBool("Falling", true);
+                animator.SetBool("Jumping", false);
+            }
+        }
+    }
 
+    /// <summary>
+    /// Adds any movements to the input given, sets animations
+    /// </summary>
+    /// <param name="vel"></param>
+    private void HandleMovement(ref Vector2 vel)
+    {
+        if (!ragdolling)
+        {
             if (Input.GetKey(moveRight))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
@@ -146,28 +175,29 @@ public class DexterMovement : MonoBehaviour
             {
                 animator.SetBool("Running", false);
                 vel.x /= 2;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
-
-            if (GetComponent<CheckGrounded>().grounded && vel.y < 0)
-            {
-                vel.y = 0;
-                //animator.SetBool("Falling", false);
-                rb2d.velocity = vel;
-            }
-            else
-            {
-                //animator.SetBool("Falling", true);
-                vel.y -= 0.01f;
-            }
-
-            rb2d.velocity = vel;
-            //Debug.Log(vel);
-
         }
-        
     }
 
+    #region Ragdoll
+
+    /// <summary>
+    /// Sets all of the current bone locations to the StandingDexter dictionary
+    /// </summary>
+    private void SaveBoneLocations()
+    {
+        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
+        {
+            if (!standingDexter.ContainsKey(bone.gameObject.name))
+            {
+                standingDexter.Add(bone.gameObject.name, bone);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Dexter go wheee
+    /// </summary>
     void StartRagdolling()
     {
         ragdolling = true;
@@ -188,10 +218,13 @@ public class DexterMovement : MonoBehaviour
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Dynamic;
     }
 
-    void StopRagdolling()
+    /// <summary>
+    /// Can be used as a coroutine. Stops dexter from flimbo
+    /// </summary>
+    /// <param name="lerp"></param>
+    /// <returns></returns>
+    private void StopRagdolling(YoinkMode mode = YoinkMode.Off)
     {
-        ragdolling = false;
-        animator.SetBool("Ragdoll", false);
 
         // Enable normal dexter collider
         collider.enabled = true;
@@ -207,7 +240,66 @@ public class DexterMovement : MonoBehaviour
         var limbRigidBodies = DexterModel.GetComponentsInChildren<Rigidbody2D>();
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Kinematic;
 
-        LoadBoneLocations();
+        switch (mode)
+        {
+            case YoinkMode.Teleport:
+                LoadBoneLocations();
+                break;
+            case YoinkMode.Lerp:
+                YoinkBoneLocations();
+                StartCoroutine("WaitForYoink");
+                return;
+            case YoinkMode.Off:
+                break;
+        }
+
+        ragdolling = false;
+        animator.SetBool("Ragdoll", false);
         canGetMagneted = false; 
     }
+
+    private IEnumerator WaitForYoink()
+    {
+        yield return new WaitForSeconds(yoinkLength);
+        ragdolling = false;
+        animator.SetBool("Ragdoll", false);
+        canGetMagneted = false;
+    }
+
+    /// <summary>
+    /// Put dexter back together again INSTANTLY
+    /// </summary>
+    private void LoadBoneLocations()
+    {
+        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
+        {
+            if (standingDexter.ContainsKey(bone.gameObject.name))
+            {
+                var loc = standingDexter[bone.gameObject.name];
+                bone.localPosition = loc.localPosition;
+                bone.localRotation = loc.localRotation;
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Try to lerp dexter back together
+    /// </summary>
+    private void YoinkBoneLocations()
+    {
+        foreach (var bone in DexterModel.GetComponentsInChildren<Transform>())
+        {
+            if (standingDexter.ContainsKey(bone.gameObject.name))
+            {
+                var loc = standingDexter[bone.gameObject.name];
+                var yoink = bone.gameObject.AddComponent<BootYoinker>();
+                yoink.start = bone;
+                yoink.end = loc;
+                yoink.length = yoinkLength;
+            }
+        }
+    }
+
+    #endregion
 }
