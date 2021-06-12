@@ -13,12 +13,15 @@ public class DexterMovement : MonoBehaviour
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
     private Rigidbody2D rb2d;
+    private Collider2D collider;
     // Use this for initialization
+
     void Start()
     {
         ragdolling = false;
         rb2d = GetComponent<Rigidbody2D>();
-        distToWall = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+        collider = GetComponent<BoxCollider2D>();
+        distToWall = collider.bounds.extents.x + 0.1f;
     }
 
     // Update is called once per frame
