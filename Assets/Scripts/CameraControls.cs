@@ -8,6 +8,7 @@ public class CameraControls : MonoBehaviour
     public GameObject dexter;
     public Camera cam;
     public GameObject character;
+    public GameObject birdFucker;
     private float minZoom = 6.0f;
     private float maxZoom = 20.0f;
     public float zoomLimiter = 2.0f;
@@ -31,6 +32,7 @@ public class CameraControls : MonoBehaviour
 
         List<Vector2> focalPoints = new List<Vector2> { };
         focalPoints.Add(dexter.transform.position);
+        focalPoints.Add(birdFucker.transform.position);
 
         //raycast down to detect ground level beneath camera, then zoom out to accommodate it
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, groundLayer);
@@ -71,7 +73,7 @@ public class CameraControls : MonoBehaviour
             xTrajectory = 1;
         }
         //lerp camera position to the average of all values, with constant modifiers (2 units ahead of motion in x, static 3 units above of y), 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(xAvg + (2.0f * xTrajectory), yAvg + 3.0f, -10), Time.deltaTime * 2);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(xAvg + (2.0f * xTrajectory), yAvg + 1.0f, -10), Time.deltaTime * 2);
         Debug.Log("theoretically changing position");
         float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance(inputList) / zoomLimiter);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
