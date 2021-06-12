@@ -79,6 +79,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     {
         yield return new WaitForSeconds(0.3f);
         canMagnetize = true;
+        isMagnetized = true;
     }
 
 

@@ -26,7 +26,7 @@ public class BirdMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         distToWall = collider.bounds.extents.x + 0.01f;
     }

@@ -538,7 +538,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 994166017663502384, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_Radius
-      value: 9
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1109773846047299639, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_SortingLayerID
