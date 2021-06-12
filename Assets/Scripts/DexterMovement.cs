@@ -8,7 +8,7 @@ public class DexterMovement : MonoBehaviour
     public KeyCode moveRight = KeyCode.D;
     public KeyCode moveLeft = KeyCode.A;
     public float horizSpeed = 3.0f;
-    public float jumpPower = 6.0f;
+    public float jumpPower;
     public bool ragdolling;
     float distToWall;
     public LayerMask groundLayer;
@@ -96,8 +96,7 @@ public class DexterMovement : MonoBehaviour
                 {
                     
                     vel.x = vel.x + 1;
-                }
-                
+                }               
             }
             else if (Input.GetKey(moveLeft))
             {
@@ -107,8 +106,7 @@ public class DexterMovement : MonoBehaviour
                 {
                     
                     vel.x = vel.x - 1;
-                }
-                
+                }                
             }
             else
             {
@@ -131,18 +129,6 @@ public class DexterMovement : MonoBehaviour
             //Debug.Log(vel);
         }
         
-
-        /*var pos = transform.position;
-		if (pos.y > boundY)
-		{
-			pos.y = boundY;
-		}
-		else if (pos.y < -boundY)
-		{
-			pos.y = -boundY;
-		}
-		transform.position = pos;*/
-
     }
 
     void StartRagdolling()

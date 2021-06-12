@@ -9,8 +9,8 @@ public class CameraControls : MonoBehaviour
     public Camera cam;
     public GameObject character;
     private float minZoom = 6.0f;
-    private float maxZoom = 10.0f;
-    private float zoomLimiter = 10.0f;
+    private float maxZoom = 20.0f;
+    public float zoomLimiter = 2.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -71,11 +71,10 @@ public class CameraControls : MonoBehaviour
             xTrajectory = 1;
         }
         //lerp camera position to the average of all values, with constant modifiers (2 units ahead of motion in x, static 3 units above of y), 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(xAvg + (2.0f * xTrajectory), yAvg + 3.0f, -10), 0.01f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(xAvg + (2.0f * xTrajectory), yAvg + 3.0f, -10), Time.deltaTime * 2);
         Debug.Log("theoretically changing position");
         float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance(inputList) / zoomLimiter);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
-
     }
 
     float getGreatestDistance(List<Vector2> inputList)
