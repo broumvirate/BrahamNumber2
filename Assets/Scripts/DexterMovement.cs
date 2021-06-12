@@ -12,15 +12,25 @@ public class DexterMovement : MonoBehaviour
     float distToWall;
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
+
+    public GameObject DexterModel;
+
     private Rigidbody2D rb2d;
     private Collider2D collider;
+    private Animator animator;
     // Use this for initialization
+
+    void Awake()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+        animator = GetComponentInChildren<Animator>();
+        StopRagdolling();
+    }
 
     void Start()
     {
         ragdolling = false;
-        rb2d = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
         distToWall = collider.bounds.extents.x + 0.1f;
     }
 
@@ -28,6 +38,17 @@ public class DexterMovement : MonoBehaviour
     void Update()
     {
         Vector2 vel = rb2d.velocity;//velocity is set to current velocity
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            StartRagdolling();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            StopRagdolling();
+        }
+
         if (!ragdolling)
         {
             
@@ -63,7 +84,7 @@ public class DexterMovement : MonoBehaviour
             }
             else
             {
-                //vel.x /= 2;
+                vel.x /= 2;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
 
@@ -94,5 +115,48 @@ public class DexterMovement : MonoBehaviour
 		}
 		transform.position = pos;*/
 
+    }
+
+    void StartRagdolling()
+    {
+        ragdolling = true;
+        animator.SetBool("Ragdoll", true);
+
+        // Disable dexter normal collider
+        collider.enabled = false;
+        rb2d.isKinematic = true;
+
+        // Enable all of the garbage
+        var hingeJoints = DexterModel.GetComponentsInChildren<HingeJoint2D>();
+        foreach (var j in hingeJoints) j.enabled = true;
+
+        var limbColliders = DexterModel.GetComponentsInChildren<EdgeCollider2D>();
+        foreach (var l in limbColliders) l.isTrigger = false;
+
+        var limbRigidBodies = DexterModel.GetComponentsInChildren<Rigidbody2D>();
+        foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    void StopRagdolling()
+    {
+        ragdolling = false;
+        animator.SetBool("Ragdoll", false);
+
+        // Enable normal dexter collider
+        collider.enabled = true;
+        rb2d.isKinematic = false;
+
+        // Disable all of the garbage
+        var hingeJoints = DexterModel.GetComponentsInChildren<HingeJoint2D>();
+        foreach (var j in hingeJoints)
+        {
+            j.enabled = false;
+        }
+
+        var limbColliders = DexterModel.GetComponentsInChildren<EdgeCollider2D>();
+        foreach (var l in limbColliders) l.isTrigger = true;
+
+        var limbRigidBodies = DexterModel.GetComponentsInChildren<Rigidbody2D>();
+        foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Kinematic;
     }
 }
