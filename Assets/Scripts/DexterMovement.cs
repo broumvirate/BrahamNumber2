@@ -27,7 +27,7 @@ public class DexterMovement : MonoBehaviour
         Vector2 vel = rb2d.velocity;//velocity is set to current velocity
         if (!ragdolling)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            
             if (Input.GetKey(jump))
             {
                 //if touching ground:
@@ -38,7 +38,8 @@ public class DexterMovement : MonoBehaviour
             }
             if (Input.GetKey(moveRight))
             {
-                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
                 if (vel.x <= horizSpeed && wallCheck.collider == null)
                 {
                     
@@ -48,7 +49,8 @@ public class DexterMovement : MonoBehaviour
             }
             else if (Input.GetKey(moveLeft))
             {
-                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
                 if (vel.x >= -horizSpeed && wallCheck.collider == null)
                 {
                     
@@ -59,6 +61,7 @@ public class DexterMovement : MonoBehaviour
             else
             {
                 vel.x /= 2;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
 
             if (GetComponent<CheckGrounded>().grounded && vel.y < 0)
