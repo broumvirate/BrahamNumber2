@@ -24,12 +24,15 @@ public class splodyBarrel : MonoBehaviour
 
         foreach (Collider2D obj in objects)
         {
-            Vector2 direction = obj.transform.position - transform.position;
+            if (obj.GetComponent<Rigidbody2D>() != null)
+            {
+                Vector2 direction = obj.transform.position - transform.position;
 
-            obj.GetComponent<Rigidbody2D>().AddForce(direction * force);
+                obj.GetComponent<Rigidbody2D>().AddForce(direction * force);
+            }
         }
 
         GameObject ExplodeFXIns = Instantiate(ExplodeFX, transform.position, Quaternion.identity);
-        Destroy(ExplodeFXIns, 10);
+        Destroy(this.gameObject);
     }
 }
