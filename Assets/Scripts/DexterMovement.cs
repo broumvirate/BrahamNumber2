@@ -26,7 +26,7 @@ public class DexterMovement : MonoBehaviour
     public GameObject DexterModel;
     public DexterHook Hook;
 
-    private bool reaching;
+    public bool reaching;
     private Rigidbody2D rb2d;
     private Collider2D collider;
     private Animator animator;
