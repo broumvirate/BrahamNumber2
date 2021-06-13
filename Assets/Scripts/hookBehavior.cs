@@ -10,7 +10,7 @@ public class hookBehavior : MonoBehaviour
 
     private FixedJoint2D activeJoint = null;
     private float detectionRadius = 0.2f;
-    private bool attached;
+    public bool attached;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,13 +57,15 @@ public class hookBehavior : MonoBehaviour
             dexterParent.GetComponent<DexterMovement>().enabled = true;
             dexterParent.GetComponent<DexterMovement>().hooked = false;
             dexterParent.GetComponent<DexterMovement>().recoveryPeriod = true;
-            bricksterCooldown();
+            StartCoroutine(bricksterCooldown());
         }
     }
 
     private IEnumerator bricksterCooldown()
     {
+        //Debug.Log("Running brickster cooldown");
         yield return new WaitForSeconds(0.5f);
+        //Debug.Log("Setting Attached to False");
         attached = false;
     }
 }
