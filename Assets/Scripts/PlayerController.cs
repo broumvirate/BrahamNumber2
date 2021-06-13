@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip dexterDeath;
+    public AudioSource audio;
     public bool isDead = false;
     private UIController uiController;
 
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         spine.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         yield return new WaitForSeconds(1f);
         yield return RestartScene();
+        Destroy(gameObject);
 
     }
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
+            audio.PlayOneShot(dexterDeath, 0.7F);
         }
     }
 
@@ -75,6 +79,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
+            audio.PlayOneShot(dexterDeath, 0.7F);
         }
     }
 }

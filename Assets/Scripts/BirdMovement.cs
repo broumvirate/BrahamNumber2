@@ -17,6 +17,8 @@ public class BirdMovement : MonoBehaviour
     private Collider2D collider;
     private Animator animator;
 
+    public bool canMove = true;
+
     private KeyCode jump = KeyCode.UpArrow;
     private KeyCode moveLeft = KeyCode.LeftArrow;
     private KeyCode moveRight = KeyCode.RightArrow;
@@ -49,34 +51,37 @@ public class BirdMovement : MonoBehaviour
 
     void Move()
     {
-        Vector2 vel = rb.velocity;//velocity is set to current velocity
-        bool isGrounded = GetComponent<CheckGrounded>().grounded;
+        if (canMove)
+        {
+            Vector2 vel = rb.velocity;//velocity is set to current velocity
+            bool isGrounded = GetComponent<CheckGrounded>().grounded;
 
-        if (Input.GetKey(moveRight) && !isGrounded)
-        {
-            RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
-            if (vel.x <= horizSpeed && wallCheck.collider == null)
+            if (Input.GetKey(moveRight) && !isGrounded)
             {
-                transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
-                vel.x = vel.x + 1;
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
+                if (vel.x <= horizSpeed && wallCheck.collider == null)
+                {
+                    transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+                    vel.x = vel.x + 1;
+                }
+                    
             }
-                
-        }
-        else if (Input.GetKey(moveLeft) && !isGrounded)
-        {
-            RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
-            if (vel.x >= -horizSpeed && wallCheck.collider == null)
+            else if (Input.GetKey(moveLeft) && !isGrounded)
             {
-                transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
-                vel.x = vel.x - 1;
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
+                if (vel.x >= -horizSpeed && wallCheck.collider == null)
+                {
+                    transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+                    vel.x = vel.x - 1;
+                }
+                    
             }
-                
-        }
-        else
-        {
-            vel.x /= 1.01f;
-        }
+            else
+            {
+                vel.x /= 1.01f;
+            }
 
-        rb.velocity = vel;
+            rb.velocity = vel;
+        }
     }
 }

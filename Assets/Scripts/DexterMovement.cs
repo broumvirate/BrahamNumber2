@@ -22,6 +22,11 @@ public class DexterMovement : MonoBehaviour
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
 
+    //I put audio here
+    public AudioClip dexterJump;
+    public AudioSource audio;
+    
+
     public bool reaching;
     private Rigidbody2D rb2d;
     private Collider2D collider;
@@ -130,7 +135,12 @@ public class DexterMovement : MonoBehaviour
                     // Add jump force
                     vel.y = jumpPower;
                     animator.SetBool("Jumping", true);
+                 
+                    audio.PlayOneShot(dexterJump, 0.7f);
+                    
+                    
                 }
+              
             }
             else
             {
