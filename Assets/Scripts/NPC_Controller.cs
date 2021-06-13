@@ -14,13 +14,13 @@ public class NPC_Controller : MonoBehaviour
     // Behavior - Walking
     public bool startWalking = false;
     private bool isWalking = true;
-    private bool facingLeft = false;
+    public bool facingLeft = false;
     public bool walkTowardsPlayer = false;
 
     // Behavior - attack
     public bool attackPlayer = false;
-    public float attackCooldown = 1f;
-    public bool canAttack = true;
+    public float attackCooldown = 1f; 
+    private bool canAttack = true;
 
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -55,17 +55,22 @@ public class NPC_Controller : MonoBehaviour
         var distance = Vector3.Distance(dexterLoc.position, rb2d.position);
         if (distance < playerDetectionRange || (attackPlayer && distance > playerAttackRange && distance < playerDetectionRange))
         {
-            var dexterIsLeft = rb2d.position.x - dexterLoc.position.x > 0;
+            var dexterIsLeft = rb2d.position.x - dexterLoc.position.x < 0;
             isWalking = true;
             facingLeft = dexterIsLeft;
         }
         else
         {
-            isWalking = startWalking;
 
             if (attackPlayer && distance < playerDetectionRange)
             {
                 Snoot();
+                isWalking = false;
+            }
+            else
+            {
+
+                isWalking = startWalking;
             }
         }
     }
@@ -106,9 +111,9 @@ public class NPC_Controller : MonoBehaviour
         rb2d.velocity = vel;
     }
 
-    private void WalkRight(ref Vector2 vel)
+    private void WalkLeft(ref Vector2 vel)
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
         if (vel.x <= speed && wallCheck.collider == null)
         {
@@ -117,9 +122,9 @@ public class NPC_Controller : MonoBehaviour
         } 
     }
 
-    private void WalkLeft(ref Vector2 vel)
+    private void WalkRight(ref Vector2 vel)
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
         if (vel.x >= -speed && wallCheck.collider == null)
         {
