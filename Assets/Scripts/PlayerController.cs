@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public bool isDead = false;
-    private DexterMovement dexter;
+    private UIController uiController;
 
     void Start()
     {
-        dexter = GetComponent<DexterMovement>();
+        uiController = FindObjectOfType<UIController>();
     }
 
     public void Kill()
@@ -24,14 +24,20 @@ public class PlayerController : MonoBehaviour
         GetComponent<Ragdoll>().StartRagdolling();
         var spine = GetComponentsInChildren<Rigidbody2D>().First(t => t.gameObject.name == "Spine");
         spine.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
-        yield return new WaitForSeconds(2f);
-        RestartScene();
+        yield return new WaitForSeconds(1f);
+        yield return RestartScene();
+
     }
 
-    public void RestartScene()
+    public IEnumerator RestartScene()
     {
+        yield return uiController.FadeToBlack(true, 3);
+        yield return new WaitForSeconds(0.3f);
+
+        yield return uiController.FadeToBlack(false, 10);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

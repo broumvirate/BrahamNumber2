@@ -19,9 +19,9 @@ public class BirdController : MonoBehaviour
 
     public IEnumerator Kill2()
     {
-        // do thing
+        GetComponentInChildren<Animator>().SetTrigger("Die");
         yield return new WaitForSeconds(1.5f);
-        c.RestartScene();
+        yield return c.RestartScene();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -68,9 +68,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,7 +152,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.015419703, y: 0.51239777}
-  m_ConnectedAnchor: {x: -0.30343518, y: 0.5176009}
+  m_ConnectedAnchor: {x: -0.2671566, y: 0.4997059}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -346,7 +346,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.000000011845021, y: 1.3599997}
-  m_ConnectedAnchor: {x: 0.06995048, y: -0.080622956}
+  m_ConnectedAnchor: {x: 0.06449163, y: -0.07490824}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -601,7 +601,7 @@ Transform:
   m_GameObject: {fileID: 1631239594840769266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.024, y: -0.221, z: 0}
-  m_LocalScale: {x: 0.7899918, y: 0.9282403, z: 0.7899918}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4364057041660375702}
   - {fileID: 1631239593964306178}
@@ -713,9 +713,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -795,9 +795,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -877,9 +877,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -961,7 +961,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.3989573, y: 0.45896405}
-  m_ConnectedAnchor: {x: 0.12100033, y: -0.23183492}
+  m_ConnectedAnchor: {x: 0.119748324, y: -0.17871475}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1146,7 +1146,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.3279895, y: 0.4936665}
-  m_ConnectedAnchor: {x: 0.26950395, y: -0.24340713}
+  m_ConnectedAnchor: {x: 0.21302712, y: -0.18443134}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1329,9 +1329,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1411,9 +1411,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1261343853
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 83f6a8fcee2424d96955203ddf28d567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1495,7 +1495,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.32652706, y: 0.4256037}
-  m_ConnectedAnchor: {x: 0.35927516, y: -0.1858655}
+  m_ConnectedAnchor: {x: 0.31442294, y: -0.13761096}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1680,7 +1680,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.17372453, y: -0.41983083}
-  m_ConnectedAnchor: {x: -0.94259137, y: 0.382654}
+  m_ConnectedAnchor: {x: -0.19701397, y: 0.4328409}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1804,11 +1804,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -1.6834712
+      value: -1.683476
       objectReference: {fileID: 0}
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 1.6793797
+      value: 1.6793796
       objectReference: {fileID: 0}
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1816,11 +1816,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -1.4518795
+      value: -1.4518785
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.60551405
+      value: 0.60551
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1828,15 +1828,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.054708242
+      value: -0.054709196
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.028233528
+      value: 0.028225899
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.5311631
+      value: 1.5311632
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1892,27 +1892,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.033164978
+      value: 0.033161163
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.0000038146973
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 4.89
+      value: 4.8900003
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 1.3314427
+      value: 1.33144
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.67371
+      value: 0.67370236
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.8488791
+      value: 1.8488793
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
