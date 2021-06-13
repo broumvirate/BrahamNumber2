@@ -35,25 +35,35 @@ public class hookBehavior : MonoBehaviour
 
     private void attachToMagnet()
     {
-        activeJoint = gameObject.AddComponent<FixedJoint2D>();
-        activeJoint.connectedBody = dexterParent.GetComponent<Rigidbody2D>();
-        activeJoint.anchor = magnet.transform.position;
-        activeJoint.connectedAnchor = magnet.transform.position;
-        attached = true;
-        dexterParent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        dexterParent.GetComponent<DexterMovement>().enabled = false;
-        dexterParent.GetComponent<DexterMovement>().hooked = true;
+        if (!attached)
+        {
+            activeJoint = dexterParent.AddComponent<FixedJoint2D>();
+            activeJoint.connectedBody = magnet.GetComponent<Rigidbody2D>();
+            activeJoint.anchor = magnet.transform.position;
+            activeJoint.connectedAnchor = magnet.transform.position;
+            attached = true;
+            dexterParent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            dexterParent.GetComponent<DexterMovement>().enabled = false;
+            dexterParent.GetComponent<DexterMovement>().hooked = true;
+        }
     }
 
     private void detachFromMagnet()
     {
-        if(activeJoint != null)
+        if(activeJoint != null && attached)
         {
-            attached = false;
             Destroy(activeJoint);
             activeJoint = null;
             dexterParent.GetComponent<DexterMovement>().enabled = true;
             dexterParent.GetComponent<DexterMovement>().hooked = false;
+            dexterParent.GetComponent<DexterMovement>().recoveryPeriod = true;
+            bricksterCooldown();
         }
+    }
+
+    private IEnumerator bricksterCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        attached = false;
     }
 }
