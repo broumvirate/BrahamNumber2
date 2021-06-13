@@ -152,7 +152,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.015419703, y: 0.51239777}
-  m_ConnectedAnchor: {x: -0.2671566, y: 0.4997059}
+  m_ConnectedAnchor: {x: -0.30343518, y: 0.5176009}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -346,7 +346,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.000000011845021, y: 1.3599997}
-  m_ConnectedAnchor: {x: 0.06449163, y: -0.07490824}
+  m_ConnectedAnchor: {x: 0.06995048, y: -0.080622956}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b8462d3def0584bbc05ef6941f28be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReleaseKey: 109
+  ReleaseKey: 32
 --- !u!58 &994166017663502384
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -584,6 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631239594840769276}
   - component: {fileID: 3807162603259597390}
+  - component: {fileID: 176475914}
   m_Layer: 0
   m_Name: BirdWithChain
   m_TagString: Untagged
@@ -632,6 +633,18 @@ MonoBehaviour:
   - {fileID: 8009316018241128715}
   - {fileID: 6123728205999051020}
   magnet: {fileID: 1631239594736506010}
+--- !u!114 &176475914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631239594840769266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61915c3b172374629ad23c63f43a3459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3468336831959520504
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +961,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.3989573, y: 0.45896405}
-  m_ConnectedAnchor: {x: 0.119748324, y: -0.17871475}
+  m_ConnectedAnchor: {x: 0.12100033, y: -0.23183492}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1133,7 +1146,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.3279895, y: 0.4936665}
-  m_ConnectedAnchor: {x: 0.21302712, y: -0.18443134}
+  m_ConnectedAnchor: {x: 0.26950395, y: -0.24340713}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1482,7 +1495,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.32652706, y: 0.4256037}
-  m_ConnectedAnchor: {x: 0.31442294, y: -0.13761096}
+  m_ConnectedAnchor: {x: 0.35927516, y: -0.1858655}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1667,7 +1680,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.17372453, y: -0.41983083}
-  m_ConnectedAnchor: {x: -0.19701397, y: 0.4328409}
+  m_ConnectedAnchor: {x: -0.94259137, y: 0.382654}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1791,11 +1804,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -1.683476
+      value: -1.6834712
       objectReference: {fileID: 0}
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 1.6793796
+      value: 1.6793797
       objectReference: {fileID: 0}
     - target: {fileID: 403951791569314837, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1803,11 +1816,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -1.4518785
+      value: -1.4518795
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.60551
+      value: 0.60551405
       objectReference: {fileID: 0}
     - target: {fileID: 1967645927668184688, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1815,15 +1828,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.054709196
+      value: -0.054708242
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.028225899
+      value: 0.028233528
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.5311632
+      value: 1.5311631
       objectReference: {fileID: 0}
     - target: {fileID: 3075519127219682990, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -1879,27 +1892,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.033161163
+      value: 0.033164978
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 8051222390113115913, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 4.8900003
+      value: 4.89
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 1.33144
+      value: 1.3314427
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.67370236
+      value: 0.67371
       objectReference: {fileID: 0}
     - target: {fileID: 8762115827154172158, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.8488793
+      value: 1.8488791
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 531189f2dfea68e419a1ea96d8bb555b, type: 3}

@@ -6,7 +6,7 @@ public class Magnet : MonoBehaviour
 {
     public List<IMagnetic> magnetizedList;
 
-    public KeyCode ReleaseKey = KeyCode.M;
+    public KeyCode ReleaseKey = KeyCode.Space;
 
     // Start is called before the first frame update
     void Start()

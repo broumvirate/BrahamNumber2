@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class hookBehavior : MonoBehaviour
 {
-    public KeyCode ReleaseKey = KeyCode.M;
+    public KeyCode ReleaseKey = KeyCode.Space;
     public GameObject magnet;
     public GameObject dexterParent;
 

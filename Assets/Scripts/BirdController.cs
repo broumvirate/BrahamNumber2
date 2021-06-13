@@ -12,11 +12,23 @@ public class BirdController : MonoBehaviour
         c = FindObjectOfType<PlayerController>();
     }
 
+    public void Kill()
+    {
+        StartCoroutine(Kill2());
+    }
+
+    public IEnumerator Kill2()
+    {
+        // do thing
+        yield return new WaitForSeconds(1.5f);
+        c.RestartScene();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
-            c.kill();
+            Kill();
         }
     }
 
@@ -24,7 +36,7 @@ public class BirdController : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
-            c.kill();
+            Kill();
         }
     }
 }
