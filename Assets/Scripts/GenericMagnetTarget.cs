@@ -22,7 +22,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isMagnetized) MoveTowardsMagnet();
+        if(isMagnetized && magnet != null) MoveTowardsMagnet();
     }
 
     void OnTriggerEnter2D(Collider2D collider)

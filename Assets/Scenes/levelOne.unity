@@ -735,6 +735,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1396018555922542717, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
   m_PrefabInstance: {fileID: 30846081}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &935948742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1396018555922542716, guid: cf41f6d9bd6c7ce4ab18cc382e38e49d, type: 3}
+  m_PrefabInstance: {fileID: 30846081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935948738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc7534885930b94aa6fb83e2c3bd1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &935948744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,6 +838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3807162603259597390, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+      propertyPath: dexter
+      value: 
+      objectReference: {fileID: 935948742}
     - target: {fileID: 3817536602574891755, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.35927483

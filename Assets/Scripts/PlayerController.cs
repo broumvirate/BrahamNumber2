@@ -14,11 +14,18 @@ public class PlayerController : MonoBehaviour
         uiController = FindObjectOfType<UIController>();
     }
 
+    /// <summary>
+    /// Kills dexter
+    /// </summary>
     public void Kill()
     {
         StartCoroutine(Kill2());
     }
 
+    /// <summary>
+    /// Also kills dexter
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Kill2()
     {
         GetComponent<Ragdoll>().StartRagdolling();
@@ -29,14 +36,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// CALL THIS WHEN YOU DIE TO RESTART EVERYTHING
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator RestartScene()
     {
         yield return uiController.FadeToBlack(true, 3);
         yield return new WaitForSeconds(0.3f);
 
-        yield return uiController.FadeToBlack(false, 10);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
+
+        // TODO: Make this fucking work
+        //yield return uiController.FadeToBlack(false, 10);
 
     }
 
