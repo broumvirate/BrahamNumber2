@@ -6,6 +6,8 @@ public class BirdController : MonoBehaviour
 {
     private PlayerController c;
 
+    public AudioSource audio;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +31,7 @@ public class BirdController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
+            audio.Play();
         }
     }
 
@@ -37,6 +40,7 @@ public class BirdController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
+            audio.Play();
         }
     }
 }
