@@ -42,6 +42,7 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
         if (collider.gameObject == this.magnet)
         {
             isMagnetized = false;
+            //why does this nullify the magnet reference? We're only gonna have one magnet, and means we can't moveTowardsMagnet until collision is reestablished
             magnet = null;
         }
     }
@@ -60,10 +61,13 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
 
     public void MoveTowardsMagnet()
     {
-        var target = magnet.GetComponent<Rigidbody2D>().position;
-        var distance = Vector2.Distance(transform.position, target);
-        var maxDistance = (1 / distance) * strength;
-        transform.position = Vector2.MoveTowards(transform.position, target, maxDistance * Time.deltaTime);
+        if(magnet != null)
+        {
+            var target = magnet.GetComponent<Rigidbody2D>().position;
+            var distance = Vector2.Distance(transform.position, target);
+            var maxDistance = (1 / distance) * strength;
+            transform.position = Vector2.MoveTowards(transform.position, target, maxDistance * Time.deltaTime);
+        }
     }
 
     public void FreeFromMagnet(Magnet m)
