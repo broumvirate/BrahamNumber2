@@ -102,13 +102,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   dexter: {fileID: 0}
-  cam: {fileID: 6316410011222896355}
-  character: {fileID: 0}
   birdFucker: {fileID: 0}
+  cam: {fileID: 6316410011222896355}
   minZoom: 6
-  maxZoom: 11
-  zoomLimiter: 1.778
-  distMultiplier: 1.5
+  maxZoom: 10
+  zoomLimiter: 3
+  distMultiplier: 1.3
 --- !u!82 &3815623284947086829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -298,6 +297,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 599979584053021573, guid: 90e0d273ce6874c4ba54e95505049caf, type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2255838861890082709, guid: 90e0d273ce6874c4ba54e95505049caf, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
