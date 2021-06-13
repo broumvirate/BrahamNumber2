@@ -15,7 +15,6 @@ public class DexterMovement : MonoBehaviour
     public KeyCode moveRight = KeyCode.D;
     public KeyCode moveLeft = KeyCode.A;
     public float horizSpeed = 3.0f;
-    public float yoinkLength = 0.4f;
     public float jumpPower;
     public bool hooked;
     public bool canGetMagneted;

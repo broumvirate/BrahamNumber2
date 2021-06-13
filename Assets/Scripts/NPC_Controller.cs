@@ -5,21 +5,21 @@ using UnityEngine;
 public class NPC_Controller : MonoBehaviour
 {
     public float speed = 1f;
-    public float playerDetectionRange = 20f;
-    public float playerAttackRange = 0f;
 
     public DexterMovement Dexter;
 
 
     // Behavior - Walking
+    private bool isWalking = false;
+    private bool facingLeft = false;
     public bool startWalking = false;
-    private bool isWalking = true;
-    public bool facingLeft = false;
     public bool walkTowardsPlayer = false;
+    public float playerDetectionRange = 20f;
 
     // Behavior - Attack
     public bool attackPlayer = false;
-    public float attackCooldown = 1f; 
+    public float attackCooldown = 1f;
+    public float playerAttackRange = 4f;
     private bool canAttack = true;
 
     private Animator animator;
@@ -53,25 +53,20 @@ public class NPC_Controller : MonoBehaviour
     {
         var dexterLoc = Dexter.GetComponent<Transform>();
         var distance = Vector3.Distance(dexterLoc.position, rb2d.position);
-        if (distance < playerDetectionRange || (attackPlayer && distance > playerAttackRange && distance < playerDetectionRange))
+        if (distance <= playerDetectionRange && distance > (attackPlayer ? playerAttackRange : 0f))
         {
             var dexterIsLeft = rb2d.position.x - dexterLoc.position.x < 0;
             isWalking = true;
             facingLeft = dexterIsLeft;
         }
+        else if (attackPlayer && distance < playerAttackRange)
+        {
+            Snoot();
+            isWalking = false;
+        }
         else
         {
-
-            if (attackPlayer && distance < playerDetectionRange)
-            {
-                Snoot();
-                isWalking = false;
-            }
-            else
-            {
-
-                isWalking = startWalking;
-            }
+            isWalking = startWalking;
         }
     }
 
@@ -80,7 +75,7 @@ public class NPC_Controller : MonoBehaviour
         if (canAttack)
         {
             Debug.Log("Attacked");
-            animator.SetTrigger("Attack");
+            animator.SetBool("Attack", true);
             StartCoroutine(SnootCooldown());
         }
     }
@@ -89,6 +84,7 @@ public class NPC_Controller : MonoBehaviour
     {
         canAttack = false;
         yield return new WaitForSeconds(attackCooldown);
+        animator.SetBool("Attack", false);
         canAttack = true;
     }
 
