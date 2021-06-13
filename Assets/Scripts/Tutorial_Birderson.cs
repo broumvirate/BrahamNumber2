@@ -6,6 +6,7 @@ public class Tutorial_Birderson : MonoBehaviour
 {
     public BoxCollider2D boxEnter;
     public GameObject birdWithChain;
+    private BirdMovement bird;
     private CameraControls cam;
 
     private bool hasBeenTriggered = false;
@@ -13,7 +14,9 @@ public class Tutorial_Birderson : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        birdWithChain.SetActive(false);
+        bird = birdWithChain.GetComponentInChildren<BirdMovement>();
+        bird.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        bird.canMove = false;
         cam = FindObjectOfType<CameraControls>();
         cam.birdFucker = cam.dexter;
     }
@@ -39,7 +42,8 @@ public class Tutorial_Birderson : MonoBehaviour
 
     public IEnumerator EnableBird()
     {
-        birdWithChain.SetActive(true);
+        bird.canMove = true;
+        bird.GetComponent<Rigidbody2D>().gravityScale = 0.7f;
         cam.birdFucker = birdWithChain.GetComponentInChildren<BirdMovement>().gameObject;
         yield return null;
     }
