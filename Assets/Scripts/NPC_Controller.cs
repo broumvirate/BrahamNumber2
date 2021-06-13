@@ -17,7 +17,7 @@ public class NPC_Controller : MonoBehaviour
     public bool facingLeft = false;
     public bool walkTowardsPlayer = false;
 
-    // Behavior - attack
+    // Behavior - Attack
     public bool attackPlayer = false;
     public float attackCooldown = 1f; 
     private bool canAttack = true;

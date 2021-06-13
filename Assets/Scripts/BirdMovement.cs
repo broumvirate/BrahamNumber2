@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BirdMovement : MonoBehaviour
@@ -77,5 +78,10 @@ public class BirdMovement : MonoBehaviour
         }
 
         rb.velocity = vel;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debugger.Break();
     }
 }
