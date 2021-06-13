@@ -6,9 +6,8 @@ public class CameraControls : MonoBehaviour
 {
     public LayerMask groundLayer;
     public GameObject dexter;
-    public Camera cam;
-    public GameObject character;
     public GameObject birdFucker;
+    public Camera cam;
     public float minZoom = 6.0f;
     public float maxZoom = 15.0f;
     public float zoomLimiter = 16/9;
@@ -65,16 +64,17 @@ public class CameraControls : MonoBehaviour
 
         //determine whether the character is moving right or left, so we can put the camera ahead of the direction of movement
         int xTrajectory = 1;
-        if(character.GetComponent<Rigidbody2D>().velocity.x < 0)
+        float dexXVel = dexter.GetComponent<Rigidbody2D>().velocity.x;
+        if(dexXVel < 0 && Mathf.Abs(dexXVel) > 0.1)
         {
             xTrajectory = -1;
         }
-        else if(character.GetComponent<Rigidbody2D>().velocity.x > 0)
+        else if(dexXVel > 0 && Mathf.Abs(dexXVel) > 0.1)
         {
             xTrajectory = 1;
         }
         //lerp camera position to the average of all values, with constant modifiers (2 units ahead of motion in x, static 3 units above of y), 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(character.transform.position.x + (2.0f * xTrajectory), character.transform.position.y + 1.0f, -10), Time.deltaTime * 2);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(dexter.transform.position.x + (2.0f * xTrajectory), dexter.transform.position.y + 1.0f, -10), Time.deltaTime * 2);
         //Debug.Log("theoretically changing position");
         //float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance(inputList)/zoomLimiter);
         float newZoom = getGreatestDistance(inputList);

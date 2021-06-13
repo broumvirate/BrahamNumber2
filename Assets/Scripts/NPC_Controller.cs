@@ -5,8 +5,8 @@ using UnityEngine;
 public class NPC_Controller : MonoBehaviour
 {
     public float speed = 1f;
-
     public DexterMovement Dexter;
+    public List<MakeLethal> DontMakeLethals = new List<MakeLethal>();
 
 
     // Behavior - Walking
@@ -133,9 +133,10 @@ public class NPC_Controller : MonoBehaviour
 
     #region Killing them
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        var leth = collider.gameObject.GetComponent<MakeLethal>();
+        if (leth != null && !DontMakeLethals.Contains(leth))
         {
             StartCoroutine(Kill());
         }
@@ -143,7 +144,8 @@ public class NPC_Controller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        var leth = collision.gameObject.GetComponent<MakeLethal>();
+        if (leth != null && !DontMakeLethals.Contains(leth))
         {
             StartCoroutine(Kill());
         }
@@ -152,7 +154,7 @@ public class NPC_Controller : MonoBehaviour
     public IEnumerator Kill()
     {
         animator.SetBool("Dying", true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.2f);
         Destroy(gameObject);
     }
 
