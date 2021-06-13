@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ public class DexterMovement : MonoBehaviour
     public float jumpPower;
     public bool hooked;
     public bool canGetMagneted;
+
     float distToWall;
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
@@ -128,10 +130,8 @@ public class DexterMovement : MonoBehaviour
                     // Add jump force
                     vel.y = jumpPower;
                     animator.SetBool("Jumping", true);
-                 
-                    audio.PlayOneShot(dexterJump, 0.7f);
-                    
-                    
+                    PlayJumpNoise();
+
                 }
               
             }
@@ -188,5 +188,22 @@ public class DexterMovement : MonoBehaviour
                 vel.x /= 2;
             }
         }
+    }
+
+    private bool playingJump = false;
+    private void PlayJumpNoise()
+    {
+        if (!playingJump)
+        {
+            audio.PlayOneShot(dexterJump, 0.7f);
+            playingJump = true;
+            StartCoroutine(FixJump());
+        }
+    }
+
+    private IEnumerator FixJump()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playingJump = false;
     }
 }
