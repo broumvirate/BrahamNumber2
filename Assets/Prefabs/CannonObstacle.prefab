@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2630651131565491232}
   - component: {fileID: 2630651131565491239}
   - component: {fileID: 2630651131565491238}
-  m_Layer: 0
-  m_Name: Cannon
+  m_Layer: 8
+  m_Name: CannonObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frequency: 2
   bulletTravelDistance: 12
-  force: 70
+  force: 1.5
   BulletPrefab: {fileID: 5315814110373612483, guid: 24706aff525468141835397a74311748, type: 3}
 --- !u!60 &2630651131565491238
 PolygonCollider2D:

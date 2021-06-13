@@ -113,19 +113,6 @@ public class DexterMovement : MonoBehaviour
             animator.SetBool("Mag", false);
         }
 
-        var ragd = GetComponent<Ragdoll>();
-        if (ragd != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ragd.StartRagdolling();
-            }
-
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                ragd.StopRagdolling(YoinkMode.Lerp);
-            }
-        }
     }
 
     /// <summary>
