@@ -1665,7 +1665,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 60032323070254336}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.17372453, y: -0.41983083}
   m_ConnectedAnchor: {x: -0.19701397, y: 0.4328409}
   m_UseMotor: 0
