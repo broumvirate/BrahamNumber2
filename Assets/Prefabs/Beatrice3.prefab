@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 8711385346535568533}
   - component: {fileID: 6771511476422421107}
   - component: {fileID: 1473354391301001078}
+  - component: {fileID: 4680791114643997087}
   m_Layer: 0
   m_Name: Beatrice3
   m_TagString: Untagged
@@ -448,6 +449,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4515f7e92c1dc4bac9e83fd66d4180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &4680791114643997087
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664214132795426040}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6526eed48f1c94a7fa4c7d24bc66c65b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1835018956692550360
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +568,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835018956692550360}
-  m_LocalRotation: {x: 0, y: 0, z: 0.4034576, w: 0.9149984}
+  m_LocalRotation: {x: 0, y: 0, z: 0.40345755, w: 0.9149984}
   m_LocalPosition: {x: 2.070578, y: 0.00000045434953, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -502,7 +599,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576474035834870627}
-  m_LocalRotation: {x: -0, y: -0, z: 0.042191375, w: 0.99910957}
+  m_LocalRotation: {x: -0, y: -0, z: 0.042191405, w: 0.99910957}
   m_LocalPosition: {x: 1.44, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -645,8 +742,8 @@ MonoBehaviour:
   - {fileID: 8969256025726512811}
   - {fileID: 3802810787171012730}
   m_Bounds:
-    m_Center: {x: -0.22593743, y: -0.016429663, z: 0}
-    m_Extent: {x: 0.39943153, y: 2.4121542, z: 0}
+    m_Center: {x: -0.22593588, y: -0.016429663, z: 0}
+    m_Extent: {x: 0.39943117, y: 2.4121542, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3029944005284251907
@@ -749,8 +846,8 @@ MonoBehaviour:
   - {fileID: 291675223069322864}
   - {fileID: 5503550808444189154}
   m_Bounds:
-    m_Center: {x: -0.91380334, y: -0.01753521, z: 0}
-    m_Extent: {x: 0.45558476, y: 1.4727569, z: 0}
+    m_Center: {x: -0.91380143, y: -0.017534971, z: 0}
+    m_Extent: {x: 0.45558476, y: 1.4727571, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3483549154111687553
@@ -974,7 +1071,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4795410844242566848}
-  m_LocalRotation: {x: -0, y: -0, z: -0.07896324, w: 0.9968775}
+  m_LocalRotation: {x: -0, y: -0, z: -0.07896322, w: 0.99687755}
   m_LocalPosition: {x: 1.63, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1034,7 +1131,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5611961294282043591}
-  m_LocalRotation: {x: 0, y: 0, z: 0.98033714, w: 0.19733004}
+  m_LocalRotation: {x: 0, y: 0, z: 0.98033714, w: 0.19733007}
   m_LocalPosition: {x: 0.107434876, y: 0.24158105, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_Children:
@@ -1314,7 +1411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153455925297374481}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9811709, w: -0.19314168}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9811709, w: -0.19314165}
   m_LocalPosition: {x: 0.04543969, y: -0.0042223223, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_Children:
@@ -1452,8 +1549,8 @@ MonoBehaviour:
   - {fileID: 84810414644314388}
   - {fileID: 4955542572255123118}
   m_Bounds:
-    m_Center: {x: -0.874854, y: 0.049286127, z: 0}
-    m_Extent: {x: 0.4801752, y: 1.736063, z: 0}
+    m_Center: {x: -0.8748523, y: 0.049286127, z: 0}
+    m_Extent: {x: 0.48017514, y: 1.7360632, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7819576715646493598
@@ -1621,8 +1718,8 @@ MonoBehaviour:
   - {fileID: 4116801682176133595}
   - {fileID: 3802810787171012730}
   m_Bounds:
-    m_Center: {x: -0.31401294, y: 0.02742207, z: 0}
-    m_Extent: {x: 0.7562786, y: 1.6070492, z: 0}
+    m_Center: {x: -0.314012, y: 0.027422428, z: 0}
+    m_Extent: {x: 0.7562776, y: 1.6070492, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8063434154047371607
@@ -1820,7 +1917,7 @@ MonoBehaviour:
   - {fileID: 6850754268145793641}
   - {fileID: 3047720672023297086}
   m_Bounds:
-    m_Center: {x: -0.39711785, y: 0.023082137, z: 0}
-    m_Extent: {x: 0.6199248, y: 1.8021644, z: 0}
+    m_Center: {x: -0.39711785, y: 0.023082018, z: 0}
+    m_Extent: {x: 0.6199249, y: 1.8021646, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
