@@ -31,7 +31,7 @@ public class DexterHook : MonoBehaviour, IMagnetic
     {
         // When entering magnet range
         var target = collider.GetComponent<Magnet>();
-        if (target != null && Dexter.ragdolling)
+        if (target != null && Dexter.GetComponent<Ragdoll>().ragdolling)
         {
             target.magnetizedList.Add(this);
             isMagnetized = true;
@@ -50,7 +50,7 @@ public class DexterHook : MonoBehaviour, IMagnetic
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Creates fixedjoint2d when touching the actual magnet
-        if (collision.gameObject == this.magnet && Dexter.canGetMagneted && Dexter.ragdolling)
+        if (collision.gameObject == this.magnet && Dexter.canGetMagneted && Dexter.GetComponent<Ragdoll>().ragdolling)
         {
             isMagnetized = false;
             var joint = gameObject.AddComponent<FixedJoint2D>();
