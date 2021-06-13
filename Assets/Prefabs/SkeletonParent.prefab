@@ -82,6 +82,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  skeleTack: {fileID: 8300000, guid: d9a4ba58490a94a40986e91afc996303, type: 3}
+  skeleDeath: {fileID: 8300000, guid: 13c7b045552e94a1d8a66dd10527c955, type: 3}
+  audio: {fileID: 6743874817501021335}
 --- !u!61 &6310290780313771219
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class BirdController : MonoBehaviour
     public IEnumerator Kill2()
     {
         GetComponentInChildren<Animator>().SetTrigger("Die");
+        audio.Play();
         yield return new WaitForSeconds(1.5f);
         yield return c.RestartScene();
     }
@@ -31,7 +32,7 @@ public class BirdController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
-            audio.Play();
+            
         }
     }
 
@@ -40,7 +41,6 @@ public class BirdController : MonoBehaviour
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
         {
             Kill();
-            audio.Play();
         }
     }
 }
