@@ -8,6 +8,7 @@ public class Tutorial_Popup : MonoBehaviour
     public float popLength;
     private float startTime;
     private bool isPopping = false;
+    private bool hasPopped = false;
     // Crap, a pop up!
 
     // Start is called before the first frame update
@@ -19,12 +20,13 @@ public class Tutorial_Popup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPopping)
+        if (isPopping && hasPopped == false)
         {
             var progress = (Time.time - startTime) / popLength;
-            if (popLength > 1)
+            if (progress > 1)
             {
                 isPopping = false;
+                hasPopped = true;
             }
             else
             {
@@ -33,7 +35,7 @@ public class Tutorial_Popup : MonoBehaviour
         }
     }
 
-    void Pop()
+    public void Pop()
     {
         startTime = Time.time;
         isPopping = true;
