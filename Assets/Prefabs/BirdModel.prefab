@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 7083379572943572421}
   - component: {fileID: 6355101370325416422}
   - component: {fileID: 4756191912942477091}
-  - component: {fileID: 2518409383365609542}
+  - component: {fileID: 1588154877418183239}
   m_Layer: 0
   m_Name: BirdModel
   m_TagString: Untagged
@@ -381,6 +381,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  canMove: 1
 --- !u!50 &3441483783213301794
 Rigidbody2D:
   serializedVersion: 4
@@ -456,7 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61915c3b172374629ad23c63f43a3459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &2518409383365609542
+  audio: {fileID: 1588154877418183239}
+--- !u!82 &1588154877418183239
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -468,7 +470,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77c4d67257c9144e080d4d08d65900b3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.51
   m_Pitch: 1
   Loop: 0
   Mute: 0
