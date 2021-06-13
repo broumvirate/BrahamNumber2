@@ -6,6 +6,7 @@ public class Cannon : MonoBehaviour
 {
     // Start is called before the first frame update
     public float frequency = 2f;
+    public float offset = 2f;
     public float bulletTravelDistance = 10f;
     public float force = 5f;
     public GameObject BulletPrefab;
@@ -13,7 +14,7 @@ public class Cannon : MonoBehaviour
     void Start()
     {
         loc = GetComponent<Transform>();
-        InvokeRepeating("Fire", frequency, frequency);
+        InvokeRepeating("Fire", offset, frequency);
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class Cannon : MonoBehaviour
         var bulletComponent = bulletObj.GetComponent<CannonBullet>();
         bulletComponent.distance = bulletTravelDistance;
         
-        // Yeet that fucker
+        // Yeet that fucker (this is copy pasted from braham code)
         bulletObj.GetComponent<Rigidbody2D>()
             .AddForce(bulletObj.transform.TransformDirection(new Vector2(0, 1)).normalized * force,
                 ForceMode2D.Impulse);

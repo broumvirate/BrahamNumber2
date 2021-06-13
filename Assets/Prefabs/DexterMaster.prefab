@@ -813,7 +813,6 @@ GameObject:
   - component: {fileID: 1396018555922542716}
   - component: {fileID: 666993444}
   - component: {fileID: 1962836304}
-  - component: {fileID: 1966227402}
   m_Layer: 0
   m_Name: DexterMaster
   m_TagString: Untagged
@@ -943,19 +942,6 @@ MonoBehaviour:
   recoverLength: 0.4
   ragdolling: 0
 --- !u!114 &1962836304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396018555922542717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd144d04d8d534b85b416cc1634e6fff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
---- !u!114 &1966227402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
