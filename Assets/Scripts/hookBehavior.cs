@@ -40,8 +40,9 @@ public class hookBehavior : MonoBehaviour
             //dexterParent.GetComponent<Rigidbody2D>().isKinematic = true;
             activeJoint = dexterParent.AddComponent<FixedJoint2D>();
             activeJoint.connectedBody = magnet.GetComponent<Rigidbody2D>();
-            activeJoint.anchor = magnet.transform.position;
-            activeJoint.connectedAnchor = magnet.transform.position;
+            activeJoint.autoConfigureConnectedAnchor = false;
+            //activeJoint.anchor = dexterParent.transform.localPosition;
+            //activeJoint.connectedAnchor = dexterParent.transform.localPosition;
             attached = true;
             dexterParent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             dexterParent.GetComponent<DexterMovement>().enabled = false;
