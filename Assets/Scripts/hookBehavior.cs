@@ -9,12 +9,13 @@ public class hookBehavior : MonoBehaviour
     public GameObject dexterParent;
 
     private FixedJoint2D activeJoint = null;
-    private float detectionRadius = 0.1f;
+    private float detectionRadius = 0.2f;
     private bool attached;
     // Start is called before the first frame update
     void Start()
     {
         attached = false;
+        //Quaternion dexterRotation = dexterParent.transform.rotation;
     }
 
     // Update is called once per frame
@@ -39,6 +40,9 @@ public class hookBehavior : MonoBehaviour
         activeJoint.anchor = magnet.transform.position;
         activeJoint.connectedAnchor = magnet.transform.position;
         attached = true;
+        dexterParent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        dexterParent.GetComponent<DexterMovement>().enabled = false;
+        dexterParent.GetComponent<DexterMovement>().hooked = true;
     }
 
     private void detachFromMagnet()
@@ -48,6 +52,8 @@ public class hookBehavior : MonoBehaviour
             attached = false;
             Destroy(activeJoint);
             activeJoint = null;
+            dexterParent.GetComponent<DexterMovement>().enabled = true;
+            dexterParent.GetComponent<DexterMovement>().hooked = false;
         }
     }
 }

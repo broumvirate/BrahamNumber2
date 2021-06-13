@@ -18,6 +18,7 @@ public class DexterMovement : MonoBehaviour
     public float yoinkLength = 0.4f;
     public float jumpPower;
     public bool ragdolling;
+    public bool hooked;
     public bool canGetMagneted;
     float distToWall;
     public LayerMask groundLayer;
@@ -164,6 +165,10 @@ public class DexterMovement : MonoBehaviour
             if (Input.GetKey(moveRight))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                if (!hooked)
+                {
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.right, distToWall + 0.05f, groundLayer);
                 if (vel.x <= horizSpeed && wallCheck.collider == null)
                 {
@@ -174,6 +179,10 @@ public class DexterMovement : MonoBehaviour
             else if (Input.GetKey(moveLeft) && !reaching)
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                if (!hooked)
+                {
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(GetComponent<BoxCollider2D>().bounds.center.x, GetComponent<BoxCollider2D>().bounds.center.y - (GetComponent<BoxCollider2D>().bounds.extents.y * 0.8f)), Vector2.left, distToWall + 0.05f, groundLayer);
                 if (vel.x >= -horizSpeed && wallCheck.collider == null)
                 {
