@@ -31,6 +31,10 @@ public class Tutorial_Birderson : MonoBehaviour
             hasBeenTriggered = true;
             StartCoroutine(EnableBird());
         }
+        else if (col.GetComponent<Tutorial_Popup>() != null)
+        {
+            col.GetComponent<Tutorial_Popup>().Pop();
+        }
     }
 
     public IEnumerator EnableBird()
