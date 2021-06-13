@@ -70,11 +70,11 @@ public class NPC_Controller : MonoBehaviour
         }
     }
 
+    // TODO: Make snoot fucking work better
     void Snoot()
     {
         if (canAttack)
         {
-            Debug.Log("Attacked");
             animator.SetBool("Attack", true);
             StartCoroutine(SnootCooldown());
         }

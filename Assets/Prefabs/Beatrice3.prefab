@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 8711385346535568533}
   - component: {fileID: 6771511476422421107}
   m_Layer: 0
-  m_Name: BeatriceController
+  m_Name: Beatrice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,14 +361,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  playerDetectionRange: 20
-  playerAttackRange: 0
   Dexter: {fileID: 0}
   startWalking: 0
-  facingLeft: 0
-  walkTowardsPlayer: 0
-  attackPlayer: 0
+  walkTowardsPlayer: 1
+  playerDetectionRange: 7
+  attackPlayer: 1
   attackCooldown: 1
+  playerAttackRange: 4
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -406,7 +405,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0137601495, y: -0.007617712}
+  m_Offset: {x: 0.0137601495, y: 0.0075423717}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -417,7 +416,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9989244, y: 3.1744537}
+  m_Size: {x: 0.9989244, y: 3.1441336}
   m_EdgeRadius: 0
 --- !u!114 &6771511476422421107
 MonoBehaviour:
