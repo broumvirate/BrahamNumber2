@@ -24,8 +24,8 @@ public class Chaintroller : MonoBehaviour
             Physics2D.IgnoreCollision(chain.GetComponent<Collider2D>(), birdCollider2D);
             Physics2D.IgnoreCollision(chain.GetComponent<Collider2D>(), dexterCollider);
         }
-        Physics2D.IgnoreCollision(magnet.GetComponent<PolygonCollider2D>(), birdCollider2D);
-        Physics2D.IgnoreCollision(magnet.GetComponent<PolygonCollider2D>(), dexterCollider);
+        Physics2D.IgnoreCollision(magnet.GetComponent<BoxCollider2D>(), birdCollider2D);
+        Physics2D.IgnoreCollision(magnet.GetComponent<BoxCollider2D>(), dexterCollider);
         Physics2D.IgnoreCollision(birdCollider2D, dexterCollider);
     }
 
