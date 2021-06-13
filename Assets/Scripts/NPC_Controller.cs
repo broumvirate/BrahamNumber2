@@ -29,6 +29,11 @@ public class NPC_Controller : MonoBehaviour
     public LayerMask groundLayer;
     private float distToWall;
 
+    //Audio
+    public AudioClip skeleTack;
+    public AudioClip skeleDeath;
+    public AudioSource audio;
+
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +81,7 @@ public class NPC_Controller : MonoBehaviour
         if (canAttack)
         {
             animator.SetBool("Attack", true);
+            audio.PlayOneShot(skeleTack, 0.5f);
             StartCoroutine(SnootCooldown());
         }
     }
@@ -154,6 +160,7 @@ public class NPC_Controller : MonoBehaviour
     public IEnumerator Kill()
     {
         animator.SetBool("Dying", true);
+        audio.PlayOneShot(skeleDeath, 0.5f);
         yield return new WaitForSeconds(1.2f);
         Destroy(gameObject);
     }
