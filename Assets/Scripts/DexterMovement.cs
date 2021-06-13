@@ -42,7 +42,6 @@ public class DexterMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         ragdoll = GetComponent<Ragdoll>();
         distToWall = collider.bounds.extents.x + 0.1f;
-        OnCooldown = false;
     }
 
     // Update is called once per frame
