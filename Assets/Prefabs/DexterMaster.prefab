@@ -923,7 +923,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  dexterJump: {fileID: 8300000, guid: 7dd40f31a4a33f6479e328671389c955, type: 3}
+  dexterJump: {fileID: 8300000, guid: ad011af5b60ff42468f72cd908e9ba37, type: 3}
   audio: {fileID: 6400748685538683}
   reaching: 0
   recoveryPeriod: 0
@@ -982,7 +982,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7dd40f31a4a33f6479e328671389c955, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
