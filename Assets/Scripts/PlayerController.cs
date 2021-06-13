@@ -53,6 +53,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public IEnumerator Win()
+    {
+        yield return uiController.FadeToWin(true, 3);
+        //Time.timeScale = 0.1f;
+        yield return new WaitForSecondsRealtime(3f);
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MakeLethal>() != null)
