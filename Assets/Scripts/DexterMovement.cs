@@ -167,7 +167,7 @@ public class DexterMovement : MonoBehaviour
     {
         if (!ragdoll.ragdolling)
         {
-            if (Input.GetKey(moveRight))
+            if (Input.GetKey(moveRight) && !reaching)
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 if (!hooked)
