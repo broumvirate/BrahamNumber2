@@ -38,7 +38,7 @@ public class BirdController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        if (collision.gameObject.GetComponent<MakeLethal>() != null && collision.gameObject.GetComponent<GenericMagnetTarget>() == null)
         {
             Kill();
         }
