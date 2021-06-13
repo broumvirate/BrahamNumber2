@@ -72,11 +72,13 @@ public class GenericMagnetTarget : MonoBehaviour, IMagnetic
 
     public void FreeFromMagnet(Magnet m)
     {
-        isMagnetized = false;
-        Destroy(magnetFixedJoint2D);
-        canMagnetize = false;
-        StartCoroutine("FreeFromMagnet2");
-
+        if (magnetFixedJoint2D != null)
+        {
+            isMagnetized = false;
+            Destroy(magnetFixedJoint2D);
+            canMagnetize = false;
+            StartCoroutine("FreeFromMagnet2");
+        }
     }
 
     private IEnumerator FreeFromMagnet2()
