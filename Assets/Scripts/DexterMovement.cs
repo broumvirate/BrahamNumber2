@@ -22,9 +22,6 @@ public class DexterMovement : MonoBehaviour
     public LayerMask groundLayer;
     //public float boundY = 2.25f; PUT THIS BACK IN TO LIMIT FROM FALLING OFF-SCREEN
 
-    public GameObject DexterModel;
-    public DexterHook Hook;
-
     public bool reaching;
     private Rigidbody2D rb2d;
     private Collider2D collider;
