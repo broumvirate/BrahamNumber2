@@ -11,7 +11,6 @@ public class Cannon : MonoBehaviour
     public float force = 5f;
     public GameObject BulletPrefab;
     public GameObject ShotTarg;
-    public GameObject Wheel;
     private Transform loc;
     void Start()
     {
