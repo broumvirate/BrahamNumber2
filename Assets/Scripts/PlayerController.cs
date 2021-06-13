@@ -13,4 +13,20 @@ public class PlayerController : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        {
+            kill();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        {
+            kill();
+        }
+    }
 }

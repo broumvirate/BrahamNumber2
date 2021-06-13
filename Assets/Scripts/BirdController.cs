@@ -11,4 +11,20 @@ public class BirdController : MonoBehaviour
     {
         c = FindObjectOfType<PlayerController>();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        {
+            c.kill();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<MakeLethal>() != null)
+        {
+            c.kill();
+        }
+    }
 }
