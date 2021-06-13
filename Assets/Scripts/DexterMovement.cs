@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Experimental.U2D.IK;
@@ -15,7 +15,6 @@ public class DexterMovement : MonoBehaviour
     public KeyCode moveRight = KeyCode.D;
     public KeyCode moveLeft = KeyCode.A;
     public float horizSpeed = 3.0f;
-    public float yoinkLength = 0.4f;
     public float jumpPower;
     public bool hooked;
     public bool canGetMagneted;
@@ -31,6 +30,7 @@ public class DexterMovement : MonoBehaviour
     private Collider2D collider;
     private Animator animator;
     private Ragdoll ragdoll;
+    public bool recoveryPeriod;
 
 
     void Start()
@@ -51,6 +51,23 @@ public class DexterMovement : MonoBehaviour
         HandleMagnet();
         HandleJump(ref vel);
         HandleMovement(ref vel);
+
+        //this part is shitty, but it prevents fucko mode so don't delete it
+        if (grounded && !hooked && recoveryPeriod)
+        {
+            //Debug.Log("what the fuck");
+            recoveryPeriod = false;
+            if (Mathf.Abs(transform.rotation.y) > 90)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            }
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        //end fucko mode prevention//
 
         if (!ragdoll.ragdolling)
         {

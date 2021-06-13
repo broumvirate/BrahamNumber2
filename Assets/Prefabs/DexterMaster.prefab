@@ -810,6 +810,7 @@ GameObject:
   - component: {fileID: 1396018555922542718}
   - component: {fileID: 1396018555922542719}
   - component: {fileID: 1396018555922542716}
+  - component: {fileID: 666993444}
   m_Layer: 0
   m_Name: DexterMaster
   m_TagString: Untagged
@@ -913,8 +914,8 @@ MonoBehaviour:
   moveLeft: 97
   horizSpeed: 3
   yoinkLength: 0.4
-  jumpPower: 10
-  ragdolling: 0
+  jumpPower: 6.5
+  hooked: 0
   canGetMagneted: 0
   groundLayer:
     serializedVersion: 2
@@ -922,6 +923,23 @@ MonoBehaviour:
   DexterModel: {fileID: 3238180362929656520}
   Hook: {fileID: 0}
   reaching: 0
+  recoveryPeriod: 0
+--- !u!114 &666993444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396018555922542717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228b9e7298bb7744e97097282b8c55f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 3238180362929656520}
+  ragdollAnimationName: Ragdoll
+  recoverLength: 0.4
+  ragdolling: 0
 --- !u!1 &1853297665034073848
 GameObject:
   m_ObjectHideFlags: 0

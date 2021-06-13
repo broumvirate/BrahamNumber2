@@ -79,9 +79,4 @@ public class BirdMovement : MonoBehaviour
 
         rb.velocity = vel;
     }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        Debugger.Break();
-    }
 }
