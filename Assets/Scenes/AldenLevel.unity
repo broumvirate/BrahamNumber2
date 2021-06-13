@@ -1180,7 +1180,7 @@ Transform:
   m_LocalScale: {x: 1.0179185, y: 1.5394639, z: 0.84269834}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161264780
 GameObject:
@@ -1326,7 +1326,7 @@ Transform:
   m_LocalScale: {x: 2.3374074, y: 0.8082484, z: 0.84269834}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209044236
 GameObject:
@@ -1383,7 +1383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500735722
 GameObject:
@@ -1415,7 +1415,7 @@ Transform:
   m_Children:
   - {fileID: 1705654486}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &500735724
 MonoBehaviour:
@@ -1715,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1883,7 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1964,88 +1964,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
---- !u!1 &1088488062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1631239594840769266, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
-  m_PrefabInstance: {fileID: 784266872}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1089707554
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 926636034189628355, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_Name
-      value: Popup
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.4844567
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
@@ -2080,25 +1998,109 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+--- !u!1001 &1069059189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 926636034189628355, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_Name
+      value: Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.242928
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.3028684
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4844567
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034189628357, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 233
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_fontSize
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_text
-      value: Hold Tab to make Dexter hook on the bird like Anakin does in that one
-        part of Episode 2 and then Obi-Wan says "I hate it when he does that"
+      value: Hold Tab to raise hook, then grab the hook with the magnet to reenact
+        that part of episode two where Anakin jumps out of the car and grabs Zam
+        Wesell's speeder on Coruscant and holds on and Obi-Wan says "I hate it when
+        he does that."
       objectReference: {fileID: 0}
     - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_fontSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 926636034307654821, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef4aaa002f3d62d46a2bc20cefdfaacc, type: 3}
+--- !u!1 &1088488062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1631239594840769266, guid: 74719ca2502ec2548ba8d5a79e466880, type: 3}
+  m_PrefabInstance: {fileID: 784266872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218675147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2181,7 @@ Transform:
   m_LocalScale: {x: 0.7107092, y: 0.7107092, z: 0.7107092}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1239949422
 PrefabInstance:
@@ -2390,7 +2392,7 @@ Transform:
   m_LocalScale: {x: 1.1805612, y: 1.6211418, z: 0.84269834}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1590924469
 PrefabInstance:
@@ -42218,7 +42220,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127687561
 GameObject:

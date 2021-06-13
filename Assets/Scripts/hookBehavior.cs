@@ -9,7 +9,7 @@ public class hookBehavior : MonoBehaviour
     public GameObject dexterParent;
 
     private FixedJoint2D activeJoint = null;
-    private float detectionRadius = 0.2f;
+    private float detectionRadius = 0.3f;
     public bool attached;
     // Start is called before the first frame update
     void Start()

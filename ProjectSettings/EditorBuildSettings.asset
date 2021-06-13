@@ -8,13 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cd3714a67aefdc940aec629e70783194
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/EmersonSHiitySCENE.unity
-    guid: c5b6ff556debc45bbb1bb842bac8d6c7
-  - enabled: 0
-    path: Assets/Scenes/BenAldenTest2.unity
-    guid: 93d518a602f0545488453b00f0c55e6a
+    path: Assets/Scenes/AldenLevel.unity
+    guid: 89bda3f4c98c467469130eaf4cf698d9
   m_configObjects: {}
