@@ -97,4 +97,15 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint") && canSave){
+            //I suppose this ought to save the Bird's position too? I haven't implemented that yet
+            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
+            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
+            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
+            Debug.Log("Saved!");
+        }
+    }
 }
