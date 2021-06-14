@@ -11,7 +11,7 @@ public class VolumeMan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.HasKey("musicVolume"))
+        if(PlayerPrefs.HasKey("musicVolume") is false)
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
             Load();

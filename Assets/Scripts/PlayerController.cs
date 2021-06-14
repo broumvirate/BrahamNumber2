@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public bool isDead = false;
     private UIController uiController;
 
+    public bool canSave;
+
     void Start()
     {
         uiController = FindObjectOfType<UIController>();
@@ -82,5 +84,17 @@ public class PlayerController : MonoBehaviour
             Kill();
             
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) && canSave)
+        {
+            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
+            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
+            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
+            Debug.Log("Saved!");
+        }
+
     }
 }
