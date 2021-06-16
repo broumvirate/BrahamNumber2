@@ -24,7 +24,11 @@ public class Tutorial_Birderson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(cam.transform.position.x > 10 && !hasBeenTriggered)
+        {
+            hasBeenTriggered = true;
+            StartCoroutine(EnableBird());
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
