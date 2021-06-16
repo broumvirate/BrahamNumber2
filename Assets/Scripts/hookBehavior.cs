@@ -8,7 +8,7 @@ public class hookBehavior : MonoBehaviour
     public GameObject magnet;
     public GameObject dexterParent;
 
-    private FixedJoint2D activeJoint = null;
+    private HingeJoint2D activeJoint = null;
     private float detectionRadius = 0.3f;
     public bool attached;
     // Start is called before the first frame update
@@ -38,9 +38,17 @@ public class hookBehavior : MonoBehaviour
         if (!attached)
         {
             //dexterParent.GetComponent<Rigidbody2D>().isKinematic = true;
-            activeJoint = dexterParent.AddComponent<FixedJoint2D>();
+            activeJoint = dexterParent.AddComponent<HingeJoint2D>();
             activeJoint.connectedBody = magnet.GetComponent<Rigidbody2D>();
             activeJoint.autoConfigureConnectedAnchor = false;
+            activeJoint.anchor = new Vector2(-0.27f, 1.17f);
+            activeJoint.connectedAnchor = new Vector2(0f, -1.359988f);
+            activeJoint.useLimits = true;
+
+            JointAngleLimits2D limits = activeJoint.limits;
+            limits.max = 1;
+            limits.min = 359;
+            activeJoint.limits = limits;
             //activeJoint.anchor = dexterParent.transform.localPosition;
             //activeJoint.connectedAnchor = dexterParent.transform.localPosition;
             attached = true;

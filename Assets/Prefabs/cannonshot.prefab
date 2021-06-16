@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1016889574637048752}
   - component: {fileID: 5391757348784186844}
   - component: {fileID: 1920888156985445103}
+  - component: {fileID: -8849420440604354842}
   m_Layer: 0
   m_Name: cannonshot
   m_TagString: Untagged
@@ -163,3 +164,17 @@ PolygonCollider2D:
       - {x: 0.065, y: -0.34}
       - {x: 0.065, y: 0.26999998}
       - {x: 0.024999999, y: 0.34}
+--- !u!114 &-8849420440604354842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315814110373612483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f21e7bdc1b499e46bb8d3fe8a641bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1.5
+  isMagnetized: 0

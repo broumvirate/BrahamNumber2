@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
+            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
+            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
+            Debug.Log("Saved!");
+        }
     }
 }
