@@ -15,7 +15,11 @@ public class AllOptions : MonoBehaviour
 
     public void BackToMain()
     {
+        //arbitrary (but neccesarily static) dexter starting positions. Returning to main menu resets your checkpoint progress.
         SceneManager.LoadScene(0);
+        PlayerPrefs.SetFloat("saveX", -24.0f);
+        PlayerPrefs.SetFloat("saveY", -2.0f);
+        PlayerPrefs.SetFloat("saveZ", 0);
     }
 
     public void Reset()

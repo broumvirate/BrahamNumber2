@@ -16,10 +16,33 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         uiController = FindObjectOfType<UIController>();
+        //unconventional way of identifying elements but we'll roll with it
+        GameObject dexter = FindObjectOfType<PlayerController>().gameObject;
+        GameObject bird = FindObjectOfType<BirdController>().gameObject;
+        GameObject bController = FindObjectOfType<Chaintroller>().gameObject;
+
+        //ripping this from Emersons code, blame him if it sucks
+        //running this on start() allows dexter to resume from his checkpoint post-death when the scene reloads, because playerprefs transcend that stuff
+        dexter.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX"), PlayerPrefs.GetFloat("saveY"), PlayerPrefs.GetFloat("saveZ"));
+
+        //calculates target Bird position
+        Vector3 store = bird.transform.position - bController.transform.position;
+
+        Debug.Log(bController.name);
+
+        Debug.Log(PlayerPrefs.GetFloat("saveY") - store.y);
+
+        bController.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX") - store.x, PlayerPrefs.GetFloat("saveY") - store.y, PlayerPrefs.GetFloat("saveZ") - store.z);
+        bird.GetComponentInChildren<BirdMovement>().canMove = true;
+
+        //TODO: In the Main Menu scene, when you click play, reset the playerprefs so it's actually possible to ever restart the level from square one.
     }
 
     /// <summary>
     /// Kills dexter
+    /// why the fuck does this exist -alden
+    /// you know you can just call the coroutine directly in the oncollisionenter
+    /// i could fix it but i wont to make an example of you
     /// </summary>
     public void Kill()
     {
@@ -37,9 +60,9 @@ public class PlayerController : MonoBehaviour
         spine.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         audio.PlayOneShot(dexterDeath, 0.7F);
         yield return new WaitForSeconds(1f);
+
         yield return RestartScene();
         Destroy(gameObject);
-
     }
 
     /// <summary>
@@ -74,6 +97,14 @@ public class PlayerController : MonoBehaviour
         {
             Kill();
             
+        }
+        if (collision.gameObject.CompareTag("Checkpoint") && canSave)
+        {
+            //I suppose this ought to save the Bird's position too? I haven't implemented that yet
+            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
+            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
+            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
+            Debug.Log("Saved!");
         }
     }
 
