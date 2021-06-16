@@ -29,11 +29,6 @@ public class PlayerController : MonoBehaviour
         {
             //calculates target Bird position
             Vector3 store = bird.transform.position - bController.transform.position;
-
-            Debug.Log(bController.name);
-
-            Debug.Log(PlayerPrefs.GetFloat("saveY") - store.y);
-
             bController.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX") - store.x, PlayerPrefs.GetFloat("saveY") - store.y, PlayerPrefs.GetFloat("saveZ") - store.z);
             bird.GetComponentInChildren<BirdMovement>().canMove = true;
 
