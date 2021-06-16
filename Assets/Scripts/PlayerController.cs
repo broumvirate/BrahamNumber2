@@ -25,17 +25,22 @@ public class PlayerController : MonoBehaviour
         //running this on start() allows dexter to resume from his checkpoint post-death when the scene reloads, because playerprefs transcend that stuff
         dexter.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX"), PlayerPrefs.GetFloat("saveY"), PlayerPrefs.GetFloat("saveZ"));
 
-        //calculates target Bird position
-        Vector3 store = bird.transform.position - bController.transform.position;
+        if (PlayerPrefs.GetInt("hasBird") == 1)
+        {
+            //calculates target Bird position
+            Vector3 store = bird.transform.position - bController.transform.position;
 
-        Debug.Log(bController.name);
+            Debug.Log(bController.name);
 
-        Debug.Log(PlayerPrefs.GetFloat("saveY") - store.y);
+            Debug.Log(PlayerPrefs.GetFloat("saveY") - store.y);
 
-        bController.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX") - store.x, PlayerPrefs.GetFloat("saveY") - store.y, PlayerPrefs.GetFloat("saveZ") - store.z);
-        bird.GetComponentInChildren<BirdMovement>().canMove = true;
+            bController.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX") - store.x, PlayerPrefs.GetFloat("saveY") - store.y, PlayerPrefs.GetFloat("saveZ") - store.z);
+            bird.GetComponentInChildren<BirdMovement>().canMove = true;
 
-        //TODO: In the Main Menu scene, when you click play, reset the playerprefs so it's actually possible to ever restart the level from square one.
+            //TODO: In the Main Menu scene, when you click play, reset the playerprefs so it's actually possible to ever restart the level from square one.
+            //^^^^  Pretty done. Hitting play and selecting the scene resets all playerprefs to the default in the level (including hasBird!)
+        }
+
     }
 
     /// <summary>

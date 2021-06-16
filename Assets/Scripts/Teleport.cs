@@ -13,13 +13,13 @@ public class Teleport : MonoBehaviour
         dexter = FindObjectOfType<PlayerController>().gameObject;
         bird = FindObjectOfType<BirdController>().gameObject;
         bController = FindObjectOfType<Chaintroller>().gameObject;
-        Debug.Log(bird);
 
         if (PlayerPrefs.HasKey("saveX") is false)
         {
             PlayerPrefs.SetFloat("saveX", dexter.transform.position.x);
             PlayerPrefs.SetFloat("saveY", dexter.transform.position.y);
             PlayerPrefs.SetFloat("saveZ", dexter.transform.position.z);
+            PlayerPrefs.SetInt("hasBird", 0);
         }
     }
 
