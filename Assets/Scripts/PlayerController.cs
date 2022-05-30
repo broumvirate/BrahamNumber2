@@ -27,26 +27,29 @@ public class PlayerController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("hasBird") == 1)
         {
-            //calculates target Bird position
-            Vector3 store = bird.transform.position - bController.transform.position;
-            bController.transform.position = new Vector3(PlayerPrefs.GetFloat("saveX") - store.x, PlayerPrefs.GetFloat("saveY") - store.y, PlayerPrefs.GetFloat("saveZ") - store.z);
-            bird.GetComponentInChildren<BirdMovement>().canMove = true;
-
-            //TODO: In the Main Menu scene, when you click play, reset the playerprefs so it's actually possible to ever restart the level from square one.
-            //^^^^  Pretty done. Hitting play and selecting the scene resets all playerprefs to the default in the level (including hasBird!)
+            bController.transform.position = new Vector3(PlayerPrefs.GetFloat("birdX"), PlayerPrefs.GetFloat("birdY"), PlayerPrefs.GetFloat("birdZ"));
+            var tutorial = FindObjectOfType<Tutorial_Birderson>();
+            if(tutorial != null)
+            {
+                StartCoroutine(tutorial.EnableBird());
+            }
         }
 
     }
 
     /// <summary>
     /// Kills dexter
-    /// why the fuck does this exist -alden
+    /// why the fuck does this exist -alden; because other things kill dexter than the collisionenter -ben
     /// you know you can just call the coroutine directly in the oncollisionenter
     /// i could fix it but i wont to make an example of you
     /// </summary>
     public void Kill()
     {
-        StartCoroutine(Kill2());
+        if (!isDead)
+        {
+            isDead = true;
+            StartCoroutine(Kill2());
+        }
     }
 
     /// <summary>
@@ -100,11 +103,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Checkpoint") && canSave)
         {
-            //I suppose this ought to save the Bird's position too? I haven't implemented that yet
-            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
-            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
-            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
-            Debug.Log("Saved!");
+            SavePosition();
         }
     }
 
@@ -114,6 +113,22 @@ public class PlayerController : MonoBehaviour
         {
             Kill();
             
+        }
+    }
+
+    private void SavePosition()
+    {
+        if(canSave)
+        {
+            var bird = FindObjectOfType<BirdController>();
+            var birdMove = FindObjectOfType<Chaintroller>();
+            PlayerPrefs.SetFloat("saveX", gameObject.transform.position.x);
+            PlayerPrefs.SetFloat("saveY", gameObject.transform.position.y);
+            PlayerPrefs.SetFloat("saveZ", gameObject.transform.position.z);
+            PlayerPrefs.SetFloat("birdX", bird.transform.position.x);
+            PlayerPrefs.SetFloat("birdY", bird.transform.position.y);
+            PlayerPrefs.SetFloat("birdZ", bird.transform.position.z);
+            Debug.Log("Saved!");
         }
     }
 

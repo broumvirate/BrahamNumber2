@@ -16,7 +16,6 @@ public class LevelSelect : MonoBehaviour
             PlayerPrefs.SetInt("hasBird", 0);
         }
 
-        Debug.Log(PlayerPrefs.GetInt("hasBird"));
         SceneManager.LoadScene(level);
 
     }

@@ -46,6 +46,7 @@ public class Tutorial_Birderson : MonoBehaviour
 
     public IEnumerator EnableBird()
     {
+        PlayerPrefs.SetInt("hasBird", 1);
         bird.canMove = true;
         bird.GetComponent<Rigidbody2D>().gravityScale = 0.7f;
         cam.birdFucker = birdWithChain.GetComponentInChildren<BirdMovement>().gameObject;
