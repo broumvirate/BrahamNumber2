@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.U2D.IK;
+
 
 public enum YoinkMode
 {
@@ -87,7 +87,7 @@ public class Ragdoll : MonoBehaviour
         var limbRigidBodies = Model.GetComponentsInChildren<Rigidbody2D>();
         foreach (var r in limbRigidBodies) r.bodyType = RigidbodyType2D.Dynamic;
 
-        var limbSolvers = Model.GetComponentsInChildren<LimbSolver2D>();
+        var limbSolvers = Model.GetComponentsInChildren<UnityEngine.U2D.IK.LimbSolver2D>();
         foreach (var s in limbSolvers) s.enabled = false;
     }
 
@@ -139,7 +139,7 @@ public class Ragdoll : MonoBehaviour
 
     private void YoinkFinisher()
     {
-        var limbSolvers = Model.GetComponentsInChildren<LimbSolver2D>();
+        var limbSolvers = Model.GetComponentsInChildren<UnityEngine.U2D.IK.LimbSolver2D>();
         foreach (var s in limbSolvers) s.enabled = true;
 
         ragdolling = false;
